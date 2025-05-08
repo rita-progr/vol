@@ -1,0 +1,12 @@
+.Burger {
+  display: flex;
+  flex-direction: column;
+  gap:.3rem;
+}
+
+.line{
+  width:25px;
+  height:3px;
+  border-radius: 10px;
+  background-color:#000;
+}

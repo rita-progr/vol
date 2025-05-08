@@ -1,0 +1,40 @@
+.MainPageMain {
+  background: rgba(255, 212, 136, 0.29);
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  padding-top: var(--navbar-height);
+  padding: 4rem;
+}
+
+.icon{
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  right: 2rem;
+}
+
+.text{
+  color: #C27100 !important;
+  font-weight: 500 !important;
+  margin-bottom: 1rem;
+}
+
+.btn{
+  border-radius: 10px;
+  margin-top: 1rem !important;
+}
+
+.textBtn p{
+  color: var(--text-secondary);
+}
+
+.title{
+
+}
+
+.img{
+
+}
