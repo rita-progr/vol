@@ -4,6 +4,7 @@ import {MainPageMain} from "./MainPageMain/MainPageMain.tsx";
 import {MainPageAsync} from "./MainPageInfo/MainPage.async.tsx";
 import {MainPageBakery} from "./MainPageBakery/MainPageBakery.tsx";
 import {MainPageServices} from "pages/MainPage/ui/MainPageServices/MainPageServices.tsx";
+import {MainPageMap} from "pages/MainPage/ui/MainPageMap/MainPageMap.tsx";
 
 
 interface MainPageProps {
@@ -17,6 +18,7 @@ const MainPage = ({className}: MainPageProps) => {
             <MainPageAsync/>
             <MainPageBakery/>
             <MainPageServices/>
+            <MainPageMap/>
         </div>
     )
 }

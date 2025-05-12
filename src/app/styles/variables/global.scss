@@ -1,6 +1,8 @@
 :root{
   --font-family-main: "Inter", sans-serif;
 
+  --background-secondary: #FFF2DA;
+
   --navbar-height:80px;
   --font-size-xs: 14px;
   --font-line-xs: 18px;
@@ -11,10 +13,12 @@
   --font-size-s-desc: 16px;
   --font-line-s-desc: 20px;
   --font-s-desc: var(--font-size-s-desc)/ var(--font-s-desc) var(--font-family-main);
-
   --font-size-m: 20px;
   --font-line-m: 26px;
   --font-m: var(--font-size-m)/ var(--font-line-m) var(--font-family-main);
+  --font-size-u: 24px;
+  --font-line-u: 26px;
+  --font-u: var(--font-size-u)/ var(--font-line-u) var(--font-family-main);
   --font-size-xm: 32px;
   --font-line-xm: 38px;
   --font-xm: var(--font-size-xm)/ var(--font-line-xm) var(--font-family-main);
@@ -26,10 +30,18 @@
   --font-line-l-desc: 52px;
   --font-l-desc: var(--font-size-l-desc)/ var(--font-line-l-desc) var(--font-family-main);
 
+  --font-size-xl: 40px;
+  --font-line-xl: 46px;
+  --font-xl: var(--font-size-xl)/ var(--font-line-xl) var(--font-family-main);
+
   --text-color: #000;
   --text-primary: #C27100;
   --text-secondary: #fff;
 
+  --background-primary: #C27100;
+
   --btn-radius: 30px;
   --card-radius: 40px;
+  --cart-background-primary: #3CB400;
+  --cart-bckground-opacity: .7;
 }

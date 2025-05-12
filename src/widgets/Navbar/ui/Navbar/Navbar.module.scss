@@ -8,6 +8,7 @@
   padding:.5rem 3rem;
   z-index:10;
   background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo{
@@ -21,4 +22,15 @@
   .Navbar {
     padding:.2rem 1.5rem;
   }
+}
+
+.flex{
+  display:flex;
+  gap:1rem;
+  align-items: center;
+}
+
+.card{
+  fill: #000;
+  width: 2.5rem;
 }

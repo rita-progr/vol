@@ -1,0 +1,34 @@
+import {SideBarSchema} from "widgets/Sidebar";
+import {AnyAction, EnhancedStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit";
+import {CombinedState} from "@reduxjs/toolkit/query";
+import {AxiosInstance} from "axios";
+
+export interface StateSchema {
+    sideBar: SideBarSchema
+    sdkmc?: string
+}
+
+export type StateSchemaKeys = keyof StateSchema;
+
+export interface reduxManagerInterface{
+    getReducerMap: () => ReducersMapObject<StateSchema>;
+    //@ts-expect-error: This is a temporary workaround for a known issue
+    reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+    add : (key: StateSchemaKeys, reducer: Reducer)=> void;
+    remove : (key: StateSchemaKeys)=> void;
+}
+
+export interface ReduxWithStoreManager extends  EnhancedStore<StateSchema>{
+    reducerManager:reduxManagerInterface;
+}
+
+export interface ThunkExtraArgs{
+    api:AxiosInstance;
+}
+
+
+export interface ThunkConfig<T>{
+    extra: ThunkExtraArgs;
+    state: StateSchema;
+    rejectValue: T;
+}
