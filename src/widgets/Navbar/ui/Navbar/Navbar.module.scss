@@ -7,8 +7,8 @@
   align-items: center;
   padding:.5rem 3rem;
   z-index:10;
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--background-main);
+  //box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo{

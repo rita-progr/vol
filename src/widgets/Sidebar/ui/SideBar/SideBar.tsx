@@ -15,31 +15,37 @@ interface SideBarProps {
 
 const itemsList:ItemsListInterface[] = [
     {
+        id:1,
         path: RoutePath.main,
         title: 'Главная',
         className: ''
     },
     {
-        path: RoutePath.main,
+        id:2,
+        path: RoutePath.catalog,
         title: 'Каталог товаров',
         className: ''
     },
     {
+        id:3,
         path: RoutePath.main,
         title: 'Корзина',
         className: ''
     },
     {
+        id:4,
         path: RoutePath.main,
         title: 'Наши адреса',
         className: ''
     },
     {
+        id:5,
         path: RoutePath.admin,
         title: 'Админка',
         className: ''
     },
     {
+        id:6,
         path: RoutePath.main,
         title: 'Выйти',
         className: ''
@@ -59,7 +65,7 @@ export const SideBar = ({className}: SideBarProps) => {
                 <div className={classNames(cls.SideBar, {[cls.collapsed]: collapsed})}>
                     <div className={cls.items}>
                         {itemsList.map(item=>(
-                            <SideBarItems item={item} onClick = {onCloseSideBar}/>
+                            <SideBarItems key = {item.id} item={item} onClick = {onCloseSideBar}/>
                         ))}
                     </div>
 

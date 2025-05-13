@@ -40,6 +40,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   width: 480px;
   height: 480px;
   border-radius: 50%;
@@ -53,6 +54,29 @@
   margin-bottom:2rem;
 }
 
-.img{
+.img, .img2, .img3, .img4{
+  position: absolute;
+}
 
+.img{
+  top:-6rem;
+  right:-6rem;
+}
+
+.img2{
+  transform: scaleX(-1);
+  top:-6rem;
+  left:-6rem;
+}
+
+.img3{
+  bottom:-6rem;
+  transform: scale(-1, -1);
+  left:-6rem;
+}
+
+.img4{
+  bottom:-6rem;
+  transform: scaleY(-1);
+  right:-6rem;
 }

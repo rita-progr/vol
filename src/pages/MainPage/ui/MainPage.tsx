@@ -3,7 +3,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {MainPageMain} from "./MainPageMain/MainPageMain.tsx";
 import {MainPageAsync} from "./MainPageInfo/MainPage.async.tsx";
 import {MainPageBakery} from "./MainPageBakery/MainPageBakery.tsx";
-import {MainPageServices} from "pages/MainPage/ui/MainPageServices/MainPageServices.tsx";
+import {ServiceList} from "widgets/ServiceList";
 import {MainPageMap} from "pages/MainPage/ui/MainPageMap/MainPageMap.tsx";
 
 
@@ -17,7 +17,7 @@ const MainPage = ({className}: MainPageProps) => {
             <MainPageMain/>
             <MainPageAsync/>
             <MainPageBakery/>
-            <MainPageServices/>
+            <ServiceList/>
             <MainPageMap/>
         </div>
     )
