@@ -9,13 +9,15 @@ interface InputProps extends HTMLInputProps {
     value?: string;
     placeholder?: string;
     onChange?: (value: string) => void;
+    label?: string;
 }
 
 export const Input = memo(({
                                className,
                                onChange,
                                placeholder,
-                               type = 'text'
+                               type = 'text',
+                               label
 }: InputProps) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +26,9 @@ export const Input = memo(({
 
     return (
         <div className={classNames(cls.Input, {}, [className])}>
+            {label && label?.length > 0 && (
+                <label htmlFor="" className={cls.label}>{label}</label>
+            )}
             <input type={type} onChange={onChangeHandler} placeholder={placeholder}/>
         </div>
     )

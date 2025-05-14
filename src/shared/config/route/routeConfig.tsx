@@ -6,6 +6,7 @@ import {CategoryPage} from "pages/CategoryPage";
 import {GoodsPage} from "pages/GoodsPage";
 import {GoodsDetailsPage} from "pages/GoodsDetailsPage";
 import {LoginPage} from "pages/LoginPage";
+import {RegisterPage} from "pages/RegisterPage";
 
 export enum RouteType {
     MAIN = 'main',
@@ -15,6 +16,7 @@ export enum RouteType {
     GOODS = 'goods',
     GOODS_DETAILS = 'goods_details',
     LOGIN = 'login',
+    REGISTER = 'register',
 }
 
 export const RoutePath: Record<RouteType,string> = {
@@ -25,6 +27,7 @@ export const RoutePath: Record<RouteType,string> = {
     [RouteType.GOODS]: '/catalog/goods/',
     [RouteType.GOODS_DETAILS]: '/catalog/goods_details/', //:id
     [RouteType.LOGIN]: '/login',
+    [RouteType.REGISTER]: '/register',
 }
 
 export const RouteConfig:Record<RouteType, RouteProps> = {
@@ -55,5 +58,9 @@ export const RouteConfig:Record<RouteType, RouteProps> = {
     [RouteType.LOGIN]:{
         path:`${RoutePath.login}`,
         element:<LoginPage/>
+    },
+    [RouteType.REGISTER]:{
+        path:`${RoutePath.register}`,
+        element:<RegisterPage/>
     },
 }

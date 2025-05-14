@@ -1,6 +1,6 @@
 import cls from './MainPageMain.module.scss';
 import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
-import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
+import {Button, ButtonRadius, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import Logo from 'shared/assets/icons/logo.svg?react';
 import wheatImg from 'shared/assets/images/mainPage/wheat.png'
 
@@ -23,7 +23,7 @@ export const MainPageMain = () => {
                 <Logo className={cls.logo}/>
                 <MyText text={'Булочная Вольчека'} size={TextSize.LARGE} className={cls.text}/>
                 <MyText text={'Радовать вас и ваших близких - наш конёк !'}/>
-                <Button theme={ButtonTheme.PRIMARY} className={cls.btn}><MyText text={'Читать подробнее'}
+                <Button theme={ButtonTheme.PRIMARY} radius={ButtonRadius.SMALL} className={cls.btn}><MyText text={'Читать подробнее'}
                                                                                 size={TextSize.EXTRA_SMALL}
                                                                                 className={cls.textBtn}/></Button>
             </div>

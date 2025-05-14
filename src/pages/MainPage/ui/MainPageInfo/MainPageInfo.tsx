@@ -2,7 +2,7 @@ import cls from './MainPageInfo.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 import imageBakery from 'shared/assets/images/various-types-bread-grain.jpg'
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
-import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
+import {Button, ButtonRadius, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import { useRef, useState} from "react";
 import {useObserver} from "shared/lib/hooks/useObserver.ts";
 
@@ -33,7 +33,7 @@ const MainPageInfo = ({className}: MainPageInfoProps) => {
                             size = {TextSize.MEDIUM}
                             align={TextAlign.CENTER}/>
                     <div className={cls.btns}>
-                        <Button theme={ButtonTheme.PRIMARY} className={classNames(cls.btn,{[cls.btnOne]:isVisible},)}>
+                        <Button theme={ButtonTheme.PRIMARY} radius = {ButtonRadius.SMALL} className={classNames(cls.btn,{[cls.btnOne]:isVisible},)}>
                             <MyText text = {'Посмотреть полное меню'}/>
                         </Button>
                         <Button theme={ButtonTheme.SECONDARY} className={classNames(cls.btn,{[cls.btnTwo]:isVisible},)}>

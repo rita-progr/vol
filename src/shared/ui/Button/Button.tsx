@@ -8,16 +8,22 @@ export enum ButtonTheme {
     CLEAR = 'clear',
 }
 
+export enum ButtonRadius{
+    DEFAULT = 'default',
+    SMALL = 'small',
+}
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     children?: ReactNode;
     onClick?: () => void;
     theme?:ButtonTheme;
+    radius?: ButtonRadius;
 }
 
-export const Button = memo(({className, children,onClick, theme = ButtonTheme.CLEAR}: ButtonProps) => {
+export const Button = memo(({className, children,onClick, theme = ButtonTheme.CLEAR, radius = ButtonRadius.DEFAULT}: ButtonProps) => {
     return (
-        <button className={classNames(cls.Button, {}, [className, cls[theme]])} onClick={onClick}>
+        <button className={classNames(cls.Button, {}, [className, cls[theme], cls[radius]])} onClick={onClick}>
             {children}
         </button>
     )

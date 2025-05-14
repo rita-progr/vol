@@ -6,9 +6,19 @@ button {
 
 .primary{
   background: var(--text-primary);
-  padding: .8rem 2.2rem;
-  border-radius: var(--btn-radius);
+  p{
+    color: #fff;
+  }
+}
 
+.default{
+  border-radius: 10px;
+  padding: .5rem 0;
+}
+
+.small{
+  border-radius: var(--btn-radius);
+  padding: .8rem 2.2rem;
 }
 
 .secondary{

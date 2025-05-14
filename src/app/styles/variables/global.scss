@@ -5,7 +5,7 @@
   --background-main: #FDF3E8;
 
   --navbar-height:80px;
-  --font-size-xs: 14px;
+  --font-size-xs: 12px;
   --font-line-xs: 18px;
   --font-xs: var(--font-size-xs)/ var(--font-line-xs) var(--font-family-main);
   --font-size-s: 16px;
@@ -45,4 +45,9 @@
   --card-radius: 40px;
   --cart-background-primary: #3CB400;
   --cart-bckground-opacity: .7;
+
+  --placeholder-color: #BFBFBF;
+  --input-radius:10px;
+
+  --form-radius:46px;
 }
