@@ -3,6 +3,7 @@ import {configureStore, ReducersMapObject} from "@reduxjs/toolkit";
 import {sideBarReducer} from "widgets/Sidebar";
 import {createReducerManager} from "./reduxManager.ts";
 import {$api} from "shared/api/api.ts";
+import {CartReducer} from "features/Cart";
 
 export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  ReducersMapObject<StateSchema>)=>{
 
@@ -12,7 +13,8 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  Re
 
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
-        sideBar: sideBarReducer
+        sideBar: sideBarReducer,
+        cart: CartReducer
     }
 
     const reducerManager = createReducerManager(rootReducer);

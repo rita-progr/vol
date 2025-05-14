@@ -4,6 +4,7 @@ import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {CartIcon} from "shared/ui/CartIcon/CartIcon.tsx";
 
 
+
 interface CardProps {
     className?: string;
     img?: string;

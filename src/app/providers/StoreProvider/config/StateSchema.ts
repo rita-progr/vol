@@ -2,9 +2,11 @@ import {SideBarSchema} from "widgets/Sidebar";
 import {AnyAction, EnhancedStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit";
 import {CombinedState} from "@reduxjs/toolkit/query";
 import {AxiosInstance} from "axios";
+import {CartSchema} from "features/Cart";
 
 export interface StateSchema {
     sideBar: SideBarSchema
+    cart: CartSchema
     sdkmc?: string
 }
 

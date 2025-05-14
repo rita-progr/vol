@@ -8,7 +8,7 @@ import {sideBarActions} from "widgets/Sidebar";
 import {useSelector} from "react-redux";
 import {getCollapsed} from "widgets/Sidebar/model/selectors/getSidebar.ts";
 import Card from 'shared/assets/icons/card.svg?react'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
 
 interface NavbarProps {
@@ -32,7 +32,9 @@ export const Navbar = ({className}: NavbarProps) => {
         <div className={classNames(cls.Navbar, {}, [className])}>
             <Logo className = {cls.logo} onClick = {onMainPage}/>
             <div className={cls.flex}>
-                <Card className={cls.card} />
+                <Link to = {RoutePath.cart}>
+                    <Card className={cls.card}/>
+                </Link>
                 <Burger onClick = {onToggleCollapsed} toggle = {collapsed}/>
             </div>
         </div>
