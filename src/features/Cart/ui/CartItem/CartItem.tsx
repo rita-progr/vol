@@ -1,13 +1,41 @@
 import cls from './CartItem.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
+import {GoodsItem} from "../../model/types/CartSchema.ts";
+import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
+import {Button} from "shared/ui/Button/Button.tsx";
 
 interface CartItemProps {
     className?: string;
+    item: GoodsItem
 }
 
-export const CartItem = ({className}: CartItemProps) => {
+
+export const CartItem = ({className, item}: CartItemProps) => {
+    //нужно вообще заносить айдишники, а потом отправлять данные на сервер
     return (
         <div className={classNames(cls.CartItem, {}, [className])}>
+            <div className={cls.cardItem}>
+                {item.img ? <img src={item.img} alt=""/>: (
+                    <div className={cls.mockImg}/>
+                )}
+                <div className={cls.itemDescr}>
+                    { <MyText text={item.title} size={TextSize.MEDIUM}/> }
+                    <MyText text={`Бжу  ${item.price}/${item.fats}/${item.carb}`} size={TextSize.MEDIUM}/>
+                    {item.calories ? <MyText text={`Ккал  ${item.calories} ккал`} size={TextSize.MEDIUM} /> : null }
+                </div>
+            </div>
+            <div className={cls.pricesBlock}>
+                <div className={cls.counts}>
+                    <Button>
+                        -
+                    </Button>
+                    <MyText text={item.count?.toString() ?? "0"} size={TextSize.MEDIUM} className={cls.count}/>
+                    <Button>
+                        +
+                    </Button>
+                </div>
+                <MyText text={`${item.price} p`} size={TextSize.MEDIUM}/>
+            </div>
 
         </div>
     )
