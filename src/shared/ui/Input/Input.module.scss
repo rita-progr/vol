@@ -21,3 +21,8 @@ input::placeholder {
 .label{
   font-size: var(--font-size-s);
 }
+
+input::file-selector-button {
+  display: none;
+}
+

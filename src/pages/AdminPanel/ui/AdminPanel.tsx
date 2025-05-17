@@ -20,7 +20,7 @@ const items: AdminPanelItem[] = [
         title: 'Заказы'
     },
     {
-        path: RoutePath.orders,
+        path: RoutePath.order,
         title: 'Управление товарами'
     },
 ]

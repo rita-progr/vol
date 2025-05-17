@@ -38,7 +38,7 @@ const GoodsPage = ({className}: GoodsPageProps) => {
 
     return (
         <div className={classNames(cls.GoodsPage, {}, [className])}>
-            <Back onClick = {onNavigate} />
+            <Back onClick = {onNavigate} className={cls.back}/>
             <MyText title={title}
                     size = {TextSize.LARGE}
                     align={TextAlign.CENTER}

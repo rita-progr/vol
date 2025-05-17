@@ -2,6 +2,12 @@ button {
   margin:0;
   padding:0;
   background: transparent;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+  scale: 1.1;
 }
 
 .primary{
