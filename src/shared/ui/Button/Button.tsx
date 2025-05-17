@@ -16,14 +16,13 @@ export enum ButtonRadius{
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     children?: ReactNode;
-    onClick?: () => void;
     theme?:ButtonTheme;
     radius?: ButtonRadius;
 }
 
-export const Button = memo(({className, children,onClick, theme = ButtonTheme.CLEAR, radius = ButtonRadius.DEFAULT}: ButtonProps) => {
+export const Button = memo(({className, children,onClick, theme = ButtonTheme.CLEAR, radius = ButtonRadius.DEFAULT, ...otherProps}: ButtonProps) => {
     return (
-        <button className={classNames(cls.Button, {}, [className, cls[theme], cls[radius]])} onClick={onClick}>
+        <button className={classNames(cls.Button, {}, [className, cls[theme], cls[radius]])} onClick={onClick} {...otherProps}>
             {children}
         </button>
     )
