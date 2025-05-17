@@ -15,6 +15,7 @@ const items:GoodsItem[] = [
         img:'',
         price: 500,
         protein: 30,
+        calories: 400,
         fats: 30,
         carb: 100
     },

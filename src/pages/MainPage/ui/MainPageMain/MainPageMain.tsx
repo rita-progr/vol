@@ -4,6 +4,9 @@ import {Button, ButtonRadius, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import Logo from 'shared/assets/icons/logo.svg?react';
 import wheatImg from 'shared/assets/images/mainPage/wheat.png'
 
+import {RoutePath} from "shared/config/route/routeConfig.tsx";
+import {Link} from "react-router-dom";
+
 export const MainPageMain = () => {
     return (
         <div className={cls.MainPageMain}>
@@ -23,9 +26,12 @@ export const MainPageMain = () => {
                 <Logo className={cls.logo}/>
                 <MyText text={'Булочная Вольчека'} size={TextSize.LARGE} className={cls.text}/>
                 <MyText text={'Радовать вас и ваших близких - наш конёк !'}/>
-                <Button theme={ButtonTheme.PRIMARY} radius={ButtonRadius.SMALL} className={cls.btn}><MyText text={'Читать подробнее'}
-                                                                                size={TextSize.EXTRA_SMALL}
-                                                                                className={cls.textBtn}/></Button>
+                <Link className={cls.btn} to={RoutePath.about}>
+                    <Button theme={ButtonTheme.PRIMARY}  radius={ButtonRadius.SMALL} ><MyText text={'Читать подробнее'}
+                                                                                                                 size={TextSize.EXTRA_SMALL}
+                                                                                              className={cls.textBtn}/></Button>
+                </Link>
+
             </div>
         </div>
     )

@@ -34,8 +34,8 @@ const itemsList:ItemsListInterface[] = [
     },
     {
         id:4,
-        path: RoutePath.main,
-        title: 'Наши адреса',
+        path: RoutePath.profile,
+        title: 'Профиль',
         className: ''
     },
     {

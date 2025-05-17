@@ -8,6 +8,8 @@ import {GoodsDetailsPage} from "pages/GoodsDetailsPage";
 import {LoginPage} from "pages/LoginPage";
 import {RegisterPage} from "pages/RegisterPage";
 import {CartPage} from "pages/CartPage";
+import {ProfilePage} from "pages/ProfilePage";
+import {AboutPage} from "pages/AboutPage";
 
 export enum RouteType {
     MAIN = 'main',
@@ -19,6 +21,8 @@ export enum RouteType {
     LOGIN = 'login',
     REGISTER = 'register',
     CART = 'cart',
+    PROFILE = 'profile',
+    ABOUT = 'about',
 }
 
 export const RoutePath: Record<RouteType,string> = {
@@ -31,6 +35,8 @@ export const RoutePath: Record<RouteType,string> = {
     [RouteType.LOGIN]: '/login',
     [RouteType.REGISTER]: '/register',
     [RouteType.CART]: '/cart',
+    [RouteType.PROFILE]: '/profile',
+    [RouteType.ABOUT]: '/about',
 }
 
 export const RouteConfig:Record<RouteType, RouteProps> = {
@@ -69,5 +75,13 @@ export const RouteConfig:Record<RouteType, RouteProps> = {
     [RouteType.CART]:{
         path:`${RoutePath.cart}`,
         element:<CartPage/>
+    },
+    [RouteType.PROFILE]:{
+        path:`${RoutePath.profile}`,
+        element:<ProfilePage/>
+    },
+    [RouteType.ABOUT]:{
+        path:`${RoutePath.about}`,
+        element:<AboutPage/>
     },
 }

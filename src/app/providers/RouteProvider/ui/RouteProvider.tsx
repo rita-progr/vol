@@ -2,6 +2,7 @@ import {Route, RouteProps, Routes, useLocation} from "react-router-dom";
 import {Suspense, useCallback} from "react";
 import './RouteProvider.scss';
 import {RouteConfig} from "shared/config/route/routeConfig.tsx";
+import {LoadingPage} from "pages/LoadingPage";
 
 
 export const RouteProvider = () => {
@@ -9,7 +10,7 @@ export const RouteProvider = () => {
 
     const renderWithRouter = useCallback((route: RouteProps)=>{
         const element = (
-            <Suspense fallback={'loading...'}>
+            <Suspense fallback={<LoadingPage/>}>
                 <div key = {location.pathname} className={'fade-in'}>
                     {route.element}
                 </div>

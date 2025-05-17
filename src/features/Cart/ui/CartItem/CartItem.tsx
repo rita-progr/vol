@@ -19,7 +19,7 @@ export const CartItem = ({className, item}: CartItemProps) => {
                     <div className={cls.mockImg}/>
                 )}
                 <div className={cls.itemDescr}>
-                    { <MyText text={item.title} size={TextSize.MEDIUM}/> }
+                    { <MyText text={item.title} size={TextSize.MEDIUM} className={cls.title}/> }
                     <MyText text={`Бжу  ${item.price}/${item.fats}/${item.carb}`} size={TextSize.MEDIUM}/>
                     {item.calories ? <MyText text={`Ккал  ${item.calories} ккал`} size={TextSize.MEDIUM} /> : null }
                 </div>
