@@ -1,6 +1,7 @@
 import cls from './Input.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 import {ChangeEvent, InputHTMLAttributes, memo} from "react";
+import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>;
 
@@ -9,6 +10,7 @@ interface InputProps extends HTMLInputProps {
     value?: string;
     placeholder?: string;
     onChange?: (value: string) => void;
+    error?: string;
     label?: string;
     classNameInput?: string;
 }
@@ -19,6 +21,7 @@ export const Input = memo(({
                                placeholder,
                                classNameInput,
                                type = 'text',
+                               error,
                                label
 }: InputProps) => {
 
@@ -32,6 +35,9 @@ export const Input = memo(({
                 <label htmlFor="" className={cls.label}>{label}</label>
             )}
             <input type={type} onChange={onChangeHandler} className={classNameInput} placeholder={placeholder}/>
+            {error && error.length > 0 ? (
+                <MyText text={error} size={TextSize.EXTRA_SMALL} className={cls.error}/>
+            ): null}
         </div>
     )
 })

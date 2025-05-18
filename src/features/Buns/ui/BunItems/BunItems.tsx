@@ -2,6 +2,8 @@ import cls from './BunItems.module.scss';
 import {classNames} from "shared/lib/classNames/classNames.ts";
 import {Card} from "shared/ui/Card/Card.tsx";
 import {GoodsItem} from "features/Cart";
+import {Link} from "react-router-dom";
+import {RoutePath} from "shared/config/route/routeConfig.tsx";
 
 
 interface BunItemsProps {
@@ -106,7 +108,9 @@ export const BunItems = ({className, addItemToCart}: BunItemsProps) => {
     return (
         <div className={classNames(cls.BunItems, {}, [className])}>
             {items && items.map(item=>(
-                <Card title={item.title} description={item?.description ?? ''} key={item.id} addItemToCart={()=>addItemToCart(item)}/>
+                <Link to = {`${RoutePath.goods_details}${item.id}`} key={item.id}>
+                    <Card title={item.title} description={item?.description ?? ''} key={item.id} addItemToCart={()=>addItemToCart(item)}/>
+                </Link>
             ))}
         </div>
     )

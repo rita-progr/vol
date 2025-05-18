@@ -10,6 +10,7 @@ export interface GoodsItem{
     fats?: number;
     carb?: number;
     calories?: number;
+    composition?: string;
 }
 
 export interface CartSchema {

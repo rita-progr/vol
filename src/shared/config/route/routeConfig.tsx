@@ -11,6 +11,7 @@ import {CartPage} from "pages/CartPage";
 import {ProfilePage} from "pages/ProfilePage";
 import {AboutPage} from "pages/AboutPage";
 import {OrderPage} from "pages/OrderGoodsPage";
+import {HistoryOrderPage} from "pages/HistoryOrderPage";
 
 export enum RouteType {
     MAIN = 'main',
@@ -25,6 +26,7 @@ export enum RouteType {
     PROFILE = 'profile',
     ABOUT = 'about',
     ORDER = 'order',
+    HISTORY_ORDER = 'history_order',
 }
 
 export const RoutePath: Record<RouteType,string> = {
@@ -40,6 +42,7 @@ export const RoutePath: Record<RouteType,string> = {
     [RouteType.PROFILE]: '/profile',
     [RouteType.ABOUT]: '/about',
     [RouteType.ORDER]: '/order',
+    [RouteType.HISTORY_ORDER]: '/history_order',
 }
 
 export const RouteConfig:Record<RouteType, RouteProps> = {
@@ -90,5 +93,9 @@ export const RouteConfig:Record<RouteType, RouteProps> = {
     [RouteType.ORDER]:{
         path:`${RoutePath.order}`,
         element:<OrderPage/>
+    },
+    [RouteType.HISTORY_ORDER]:{
+        path:`${RoutePath.history_order}`,
+        element:<HistoryOrderPage/>
     },
 }

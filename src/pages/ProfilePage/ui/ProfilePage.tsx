@@ -17,10 +17,12 @@ const ProfilePage = ({className}: ProfilePageProps) => {
         <div className={classNames(cls.ProfilePage, {}, [className])}>
             <ProfileCard firstName={"Рита"} className={cls.card}/>
             <div className={cls.card}>
-                <CardWithPin className={cls.history}>
-                    <MyText text={"История заказов"} size={TextSize.LARGE}/>
-                    <Time/>
-                </CardWithPin>
+                <Link to={RoutePath.history_order}  className={cls.history} >
+                    <CardWithPin className={cls.history}>
+                        <MyText text={"История заказов"} size={TextSize.LARGE}/>
+                        <Time/>
+                    </CardWithPin>
+                </Link>
                 <Link to={RoutePath.cart}  className={cls.history} >
                     <CardWithPin className={cls.history}>
                         <MyText text={"В корзину"} size={TextSize.LARGE}/>

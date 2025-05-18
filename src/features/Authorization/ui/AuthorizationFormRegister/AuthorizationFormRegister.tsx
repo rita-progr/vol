@@ -5,13 +5,19 @@ import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import {Link} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
+import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
+import {AuthReducer} from "../../model/slices/AuthSlices.ts";
 
 interface AuthorizationFormProps {
     className?: string;
 }
 
 export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) => {
+    const reducers: ReducersList = {
+        auth: AuthReducer
+    }
     return (
+        <DynemicModuleLoader reducers={reducers}>
         <div className={classNames(cls.AuthorizationForm, {}, [className])}>
             <MyText text = {'Регистрация'}
                     size={TextSize.XMEDIUM}
@@ -38,5 +44,6 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
             </div>
 
         </div>
+        </DynemicModuleLoader>
     )
 }

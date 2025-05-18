@@ -3,11 +3,12 @@ import {AnyAction, EnhancedStore, Reducer, ReducersMapObject} from "@reduxjs/too
 import {CombinedState} from "@reduxjs/toolkit/query";
 import {AxiosInstance} from "axios";
 import {CartSchema} from "features/Cart";
+import {AuthSchema} from "features/Authorization";
 
 export interface StateSchema {
     sideBar: SideBarSchema
     cart: CartSchema
-    sdkmc?: string
+    auth?: AuthSchema
 }
 
 export type StateSchemaKeys = keyof StateSchema;

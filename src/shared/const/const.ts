@@ -1,0 +1,1 @@
+export const USER_COOKIES_KEY = 'token'
