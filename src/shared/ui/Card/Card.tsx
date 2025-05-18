@@ -23,7 +23,7 @@ export const Card = ({className, img, description, title, addItemToCart}: CardPr
                 <MyText text={title} className={cls.title} size={TextSize.XMEDIUM} align={TextAlign.LEFT}/>
                 <MyText text={description} className={cls.text} size={TextSize.MEDIUM}/>
             </div>
-         <CartIcon onClick = {addItemToCart}/>
+         <CartIcon onClick = {addItemToCart} className={cls.icon}/>
         </div>
     )
 }

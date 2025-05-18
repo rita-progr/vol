@@ -6,7 +6,6 @@ import Cake from 'shared/assets/icons/cake.svg?react';
 import Cupcake from 'shared/assets/icons/cupcake.svg?react';
 import IceCream from 'shared/assets/icons/iceCream.svg?react'
 import Coffee from 'shared/assets/icons/coffee.svg?react';
-import React from "react";
 import {MyText, TextAlign, TextSize, TextTheme} from "shared/ui/MyText/MyText.tsx";
 import {Link} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
@@ -53,7 +52,6 @@ const items: ItemIcons[] = [
 export const ServiceList = ({className}: ServiceListProps) => {
     return (
         <div className={classNames(cls.ServiceList, {}, [className])}>
-            <img src={backgr} alt="" className={cls.img}/>
             <div className={cls.container}>
                 <MyText title={'Наши услуги'}
                         align={TextAlign.CENTER}
@@ -63,7 +61,7 @@ export const ServiceList = ({className}: ServiceListProps) => {
                 <div className={cls.itemsService}>
                     {items.map(item => (
                         <Link to = {`${RoutePath.goods}${item.link}`} key={item.title} className={cls.item}>
-                            <item.icon/>
+                            <item.icon className={cls.icon}/>
                             <MyText text={item.title} align={TextAlign.CENTER}/>
                         </Link>
                     ))}

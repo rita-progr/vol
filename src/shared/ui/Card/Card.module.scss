@@ -37,3 +37,10 @@
 .title{
   color: var(--text-primary)
 }
+
+@media(max-width: 576px) {
+  .Card {
+    max-width: 300px;
+  }
+
+}

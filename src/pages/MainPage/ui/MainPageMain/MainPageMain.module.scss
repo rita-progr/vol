@@ -28,7 +28,7 @@
 
 .btn{
   //border-radius: 10px;
-  margin-top: 2rem !important;
+  margin-top: 2rem ;
   z-index: 100;
 }
 
@@ -80,4 +80,35 @@
   bottom:-6rem;
   transform: scaleY(-1);
   right:-6rem;
+}
+
+@media(max-width: 576px){
+  .img4, .img3, .img, .img2{
+    display:none;
+  }
+  .MainPageMain {
+    padding: 2rem;
+    background-position: right;
+
+    p{
+      text-align: center;
+
+    }
+  }
+
+  .logo{
+    display:none;
+  }
+
+  .title{
+    width: 300px;
+    height: 300px;
+    padding-top: 3rem;
+  }
+
+  .btn{
+    margin-top: 1rem;
+  }
+  p{
+  }
 }

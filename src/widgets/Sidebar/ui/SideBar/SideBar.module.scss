@@ -3,8 +3,8 @@
   flex-direction: column;
   position: fixed;
   height:100vh;
-  z-index: 10;
-  top: var(--navbar-height);
+  z-index: 1;
+  top: 4rem;
   left:0;
   width: 400px;
   background-color: var(--background-main);

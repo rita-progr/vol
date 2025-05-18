@@ -1,6 +1,6 @@
 import cls from './MainPageInfo.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
-import imageBakery from 'shared/assets/images/various-types-bread-grain.jpg'
+
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Button, ButtonRadius, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import { useRef, useState} from "react";
@@ -22,7 +22,7 @@ const MainPageInfo = ({className}: MainPageInfoProps) => {
     return (
         <div className={classNames(cls.MainPageInfo, {}, [className])} ref={ref}>
             <div className={cls.img}>
-                <img src={imageBakery} alt=""/>
+                {/*<img src={imageBakery} alt=""/>*/}
                 <div className={cls.texts}>
                     <MyText
                             text = {'Вымесить. Проверить. Испечь.'}

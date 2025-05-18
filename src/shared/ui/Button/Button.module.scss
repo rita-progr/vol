@@ -36,3 +36,10 @@ button:hover {
 .clear{
 
 }
+
+@media(max-width: 576px){
+  .small{
+    //border-radius: 10px;
+    padding: .5rem .7rem;
+  }
+}

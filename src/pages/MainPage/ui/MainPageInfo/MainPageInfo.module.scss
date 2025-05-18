@@ -1,17 +1,11 @@
 .MainPageInfo {
-
-}
-.img{
-  position: relative;
-  img{
-    width: 100%;
-    height:calc(100vh - var(--navbar-height));
-  }
+  padding: 3rem 2rem;
+  //height: calc(100vh - var(--navbar-height));
+  background: url('shared/assets/images/various-types-bread-grain.jpg');
+  background-size: cover;
 }
 
 .texts{
-  position: absolute;
-  top:15%;
   display:flex;
   gap:1.5rem;
   flex-direction: column;
@@ -47,7 +41,7 @@
 }
 
 .textFooter{
-  position: absolute;
+  margin-top: 8rem;
   display:flex;
   width: 100%;
   bottom:4rem;
@@ -88,4 +82,17 @@
     transform: translate3d(0, 0, 0);
     opacity: 1;
   }
+}
+
+@media(max-width: 576px) {
+  .btns {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .btnOne{
+    padding: .7rem;
+  }
+
 }
