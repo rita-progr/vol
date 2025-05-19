@@ -1,3 +1,11 @@
 .HistoryOrderPage {
+  padding: 10rem 3rem;
+  min-height: 100vh;
+  background: var(--background-main);
+}
 
+@media(max-width: 576px){
+  .HistoryOrderPage {
+    padding: 5rem 2rem;
+  }
 }

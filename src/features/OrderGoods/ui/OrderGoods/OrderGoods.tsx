@@ -93,7 +93,7 @@ export const OrderGoods = ({className}: OrderGoodsProps) => {
     return (
         <div className={classNames(cls.OrderGoods, {}, [className])}>
             <div className={cls.flex}>
-                <Input placeholder={"Введите название товара"}  className={cls.item}/>
+                {/*<Input placeholder={"Введите название товара"}  className={cls.item}/>*/}
                 <Button theme={ButtonTheme.PRIMARY}
                         onClick={onOpen}
                         className={cls.btn}><MyText text={'Добавить товар'} size={TextSize.SMALL}/>

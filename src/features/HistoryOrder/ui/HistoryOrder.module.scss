@@ -1,0 +1,13 @@
+.HistoryOrder {
+  display: flex;
+  flex-direction: column;
+  gap:2rem;
+  padding:2rem;
+  background: #ffffff;
+  border-radius: 40px;
+}
+
+.bunItem{
+  max-width: 300px;
+  width: 100%;
+}
