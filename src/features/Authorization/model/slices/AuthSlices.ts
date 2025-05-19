@@ -17,7 +17,10 @@ const authSlice = createSlice({
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
         },
-        setErrors: (state, action: PayloadAction<{ email?: string; password?: string , repeatError?:string}>) => {
+        setRepeatPassword: (state, action: PayloadAction<string>) => {
+            state.repeatPassword = action.payload;
+        },
+        setErrors: (state, action: PayloadAction<{ email?: string; password?: string , repeatPassword?:string}>) => {
             state.validateErrors = action.payload;
         },
         setLoading: (state, action: PayloadAction<boolean>) => {

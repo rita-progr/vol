@@ -4,6 +4,7 @@ import {sideBarReducer} from "widgets/Sidebar";
 import {createReducerManager} from "./reduxManager.ts";
 import {$api} from "shared/api/api.ts";
 import {CartReducer} from "features/Cart";
+import {rtkApi} from "shared/api/rtkApi.tsx";
 
 export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  ReducersMapObject<StateSchema>)=>{
 
@@ -14,6 +15,7 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  Re
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         sideBar: sideBarReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
         cart: CartReducer
     }
 
@@ -27,7 +29,7 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  Re
             thunk: {
                 extraArgument: extraArg
             }
-        })
+        }).concat(rtkApi.middleware)
     });
     //@ts-expect-error: This is a temporary workaround for a known issue
     store.reducerManager = reducerManager;

@@ -13,6 +13,7 @@ import {AboutPage} from "pages/AboutPage";
 import {OrderPage} from "pages/OrderGoodsPage";
 import {HistoryOrderPage} from "pages/HistoryOrderPage";
 import {ErrorPage} from "pages/ErrorPage";
+import {CodeConfirmPage} from "pages/CodeConfirmPage";
 
 export enum RouteType {
     MAIN = 'main',
@@ -28,6 +29,7 @@ export enum RouteType {
     ABOUT = 'about',
     ORDER = 'order',
     HISTORY_ORDER = 'history_order',
+    CODE = 'code',
     NOT_FOUND = 'not-found',
 }
 
@@ -40,6 +42,7 @@ export const RoutePath: Record<RouteType,string> = {
     [RouteType.GOODS_DETAILS]: '/catalog/goods_details/', //:id
     [RouteType.LOGIN]: '/login',
     [RouteType.REGISTER]: '/register',
+    [RouteType.CODE]: '/code',
     [RouteType.CART]: '/cart',
     [RouteType.PROFILE]: '/profile',
     [RouteType.ABOUT]: '/about',
@@ -100,6 +103,10 @@ export const RouteConfig:Record<RouteType, RouteProps> = {
     [RouteType.HISTORY_ORDER]:{
         path:`${RoutePath.history_order}`,
         element:<HistoryOrderPage/>
+    },
+    [RouteType.CODE]:{
+        path:`${RoutePath.code}`,
+        element:<CodeConfirmPage/>
     },
     [RouteType.NOT_FOUND]:{
         path:`${RoutePath["not-found"]}`,

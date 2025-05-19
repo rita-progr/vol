@@ -1,6 +1,6 @@
 .MainPageInfo {
   padding: 3rem 2rem;
-  //height: calc(100vh - var(--navbar-height));
+  min-height: calc(100vh - var(--navbar-height));
   background: url('shared/assets/images/various-types-bread-grain.jpg');
   background-size: cover;
 }

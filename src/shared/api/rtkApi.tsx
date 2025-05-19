@@ -2,9 +2,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {USER_COOKIES_KEY} from "shared/const/const.ts";
 import Cookies from 'js-cookie';
 
-
-const baseUrl = "";
-
+const baseUrl = "http://87.228.90.160:8080";
 
 export const rtkApi = createApi({
     reducerPath: 'api',

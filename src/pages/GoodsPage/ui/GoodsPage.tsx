@@ -34,13 +34,10 @@ const GoodsPage = ({className}: GoodsPageProps) => {
         return null;
     }
 
-
-
     return (
         <div className={classNames(cls.GoodsPage, {}, [className])}>
             <div className={cls.flex} onClick={onNavigate}>
                 <Back className={cls.back}/>
-                {/*<MyText text={'Назад'} size={TextSize.EXTRA_SMALL} theme={TextTheme.SECONDARY}/>*/}
             </div>
             <MyText title={title}
                     size={TextSize.LARGE}

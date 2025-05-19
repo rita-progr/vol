@@ -6,13 +6,14 @@ import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>;
 
 interface InputProps extends HTMLInputProps {
-    className?: string;
-    value?: string;
-    placeholder?: string;
-    onChange?: (value: string) => void;
-    error?: string;
-    label?: string;
-    classNameInput?: string;
+    className?: string,
+    value?: string,
+    placeholder?: string,
+    onChange?: (value: string) => void,
+    error?: string,
+    label?: string,
+    classNameInput?: string,
+    ref?: (el: any) => any
 }
 
 export const Input = memo(({
@@ -22,8 +23,9 @@ export const Input = memo(({
                                classNameInput,
                                type = 'text',
                                error,
-                               label
-}: InputProps) => {
+                               label,
+                               ref
+                           }: InputProps) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -34,10 +36,10 @@ export const Input = memo(({
             {label && label?.length > 0 && (
                 <label htmlFor="" className={cls.label}>{label}</label>
             )}
-            <input type={type} onChange={onChangeHandler} className={classNameInput} placeholder={placeholder}/>
+            <input ref={ref} type={type} onChange={onChangeHandler} className={classNameInput} placeholder={placeholder}/>
             {error && error.length > 0 ? (
                 <MyText text={error} size={TextSize.EXTRA_SMALL} className={cls.error}/>
-            ): null}
+            ) : null}
         </div>
     )
 })

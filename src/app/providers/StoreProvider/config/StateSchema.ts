@@ -4,11 +4,13 @@ import {CombinedState} from "@reduxjs/toolkit/query";
 import {AxiosInstance} from "axios";
 import {CartSchema} from "features/Cart";
 import {AuthSchema} from "features/Authorization";
+import {rtkApi} from "shared/api/rtkApi.tsx";
 
 export interface StateSchema {
     sideBar: SideBarSchema
     cart: CartSchema
     auth?: AuthSchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 }
 
 export type StateSchemaKeys = keyof StateSchema;

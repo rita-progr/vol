@@ -40,7 +40,7 @@ const items: ItemIcons[] = [
     {
         icon: IceCream,
         title: 'Мороженое',
-        link:'iceCream'
+        link:'w'
     },
     {
         icon: Coffee,

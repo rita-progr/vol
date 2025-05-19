@@ -15,10 +15,10 @@ export const validateAuthForm = ({email, password, repeatPassword}:AuthSchema) =
         errors.password = 'Пароль должен быть не менее 6 символов';
     }
 
-    if(repeatPassword){
-        if(repeatPassword !== password){
-            errors.repeatPassword = 'Пароли должны совпадать'
-        }
+    if(repeatPassword !== password){
+        console.log(repeatPassword)
+        console.log(password)
+        errors.repeatPassword = 'Пароли должны совпадать'
     }
 
 

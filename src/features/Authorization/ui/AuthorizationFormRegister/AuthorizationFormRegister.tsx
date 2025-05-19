@@ -6,16 +6,86 @@ import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import {Link} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
 import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
-import {AuthReducer} from "../../model/slices/AuthSlices.ts";
+import {AuthActions, AuthReducer} from "../../model/slices/AuthSlices.ts";
+import {useRegisterUserMutation} from "../../api/AuthorizationApi.tsx";
+import Cookies from "js-cookie";
+import {USER_COOKIES_KEY} from "shared/const/const.ts";
+import {LoadingPage} from "pages/LoadingPage";
+import {useSelector} from "react-redux";
+import {
+    getAuthEmail,
+    getAuthPassword,
+    getAuthRepeatPassword,
+    getValidateError
+} from "../../model/selectors/authSelectors.ts";
+import {useCallback} from "react";
+import {validateAuthForm} from "features/Authorization/model/services/validateData/validateData.tsx";
+import {useAppDispatch} from "shared/lib/hooks/useAppDispatch.tsx";
 
 interface AuthorizationFormProps {
     className?: string;
 }
 
+const reducers: ReducersList = {
+    auth: AuthReducer
+}
+
 export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) => {
-    const reducers: ReducersList = {
-        auth: AuthReducer
+    const [registerUser, {isLoading, isError}] = useRegisterUserMutation();
+    const email = useSelector(getAuthEmail);
+    const password = useSelector(getAuthPassword);
+    const repeatPassword = useSelector(getAuthRepeatPassword)
+    const dispatch = useAppDispatch();
+    const validateError = useSelector(getValidateError);
+    const handleEmailChange = useCallback((email: string) => {
+        const errors = validateAuthForm({ email});
+        dispatch(AuthActions.setErrors({ ...validateError, email: errors.email }));
+        dispatch(AuthActions.setEmail(email))
+
+    },[dispatch, validateError])
+
+    const handlePasswordChange = useCallback((password: string) => {
+        const { password: passwordError, repeatPassword: repeatPasswordError } = validateAuthForm({
+            email,
+            password,
+            repeatPassword,
+        });
+        dispatch(AuthActions.setPassword(password));
+        dispatch(AuthActions.setErrors({
+            ...validateError,
+            password: passwordError,
+            repeatPassword: repeatPasswordError,
+        }));
+    }, [dispatch, email, repeatPassword, validateError]);
+
+    const handleRepeatPasswordChange = useCallback((repeatPassword: string) => {
+        const { repeatPassword: repeatPasswordError } = validateAuthForm({
+            email,
+            password,
+            repeatPassword,
+        });
+        dispatch(AuthActions.setRepeatPassword(repeatPassword));
+        dispatch(AuthActions.setErrors({
+            ...validateError,
+            repeatPassword: repeatPasswordError,
+        }));
+    }, [dispatch, email, password, validateError]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await registerUser({ email, password }).unwrap();
+            Cookies.set(USER_COOKIES_KEY, response.token)
+        } catch (error) {
+            console.error('Ошибка регистрации', error);
+        }
+    };
+
+    if(isLoading){
+        return <LoadingPage/>
     }
+
+
     return (
         <DynemicModuleLoader reducers={reducers}>
         <div className={classNames(cls.AuthorizationForm, {}, [className])}>
@@ -23,12 +93,12 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
                     size={TextSize.XMEDIUM}
                     align={TextAlign.CENTER}
                     className={cls.title}/>
-            <Input placeholder={'example@mail.ru'} label={'Введите почту'}/>
-            <Input placeholder={'1234567890'} label={'Введите пароль'}/>
-            <Input placeholder={'1234567890'} label={'Повторите пароль'}/>
+            <Input placeholder={'example@mail.ru'} label={'Введите почту'} value={email} onChange={handleEmailChange} error={ validateError ? validateError.email : ""}/>
+            <Input placeholder={'1234567890'} label={'Введите пароль'} value={password} onChange={handlePasswordChange} error={ validateError ? validateError.password : ""}/>
+            <Input placeholder={'1234567890'} label={'Повторите пароль'} value={repeatPassword} onChange={handleRepeatPasswordChange} error={ validateError ? validateError.repeatPassword : ""}/>
             <div className={cls.btnCont}>
-                <Button theme={ButtonTheme.PRIMARY} className={cls.btn}>
-                    <MyText text={'Войти'} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
+                <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={handleSubmit}>
+                    <MyText text={'Регистрация'} size={TextSize.MEDIUM} align={TextAlign.CENTER} />
                 </Button>
                 <div className={cls.text}>
                     <MyText text={'Уже есть аккаунт? '} size={TextSize.EXTRA_SMALL}/>
