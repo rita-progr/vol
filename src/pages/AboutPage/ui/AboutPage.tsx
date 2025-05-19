@@ -24,8 +24,7 @@ const AboutPage = ({className}: AboutPageProps) => {
             <MyText title = {"Название нашей пекарни — «Вольчека» — родилось не случайно. Оно сочетает в себе тепло домашнего очага и свободу вкуса, ведь у нас каждый может выбрать то, что по душе: от классического бородинского хлеба до авторских десертов и сезонных новинок."} size={TextSize.MEDIUM}/>
             <MyText title = {"Мы верим, что хороший хлеб способен сделать день лучше, а чашка ароматного кофе с круассаном — подарить мгновение счастья. Поэтому каждое утро наши пекари начинают работу задолго до рассвета, чтобы вы могли наслаждаться выпечкой, согретой теплом духовок."} size={TextSize.MEDIUM}/>
             <MyText title = {"Почему выбирают нас ?"} size={TextSize.XMEDIUM} className={cls.sbt}/>
-            <div className={cls.flex}>
-                <div className={cls.flexCol}>
+            <div className={cls.grid}>
                     <CardWithPin className={cls.pin}>
                         <MyText text={"Свежая выпечка ежедневно"} size={TextSize.XMEDIUM}/>
                         <MyText text={"Mы печём без полуфабрикатов и заморозки."} size={TextSize.SMALL}/>
@@ -34,8 +33,6 @@ const AboutPage = ({className}: AboutPageProps) => {
                         <MyText text={"Натуральные ингредиенты "} size={TextSize.XMEDIUM}/>
                         <MyText text={"Никаких искусственных добавок, только мука высшего сорта, свежие яйца, натуральное масло и дрожжи."} size={TextSize.SMALL}/>
                     </CardWithPin>
-                </div>
-                <div className={cls.flexCol}>
                     <CardWithPin className={cls.pin}>
                         <MyText text={"Забота о клиентах"} size={TextSize.XMEDIUM}/>
                         <MyText text={"Мы любим общаться с нашими гостями и стараемся учитывать каждое пожелание."} size={TextSize.SMALL}/>
@@ -44,7 +41,6 @@ const AboutPage = ({className}: AboutPageProps) => {
                         <MyText text={"Уютная атмосфера"} size={TextSize.XMEDIUM}/>
                         <MyText text={"Заходите не спеша попить кофе, попробовать десерты или просто насладиться запахом свежего хлеба.\n"} size={TextSize.SMALL}/>
                     </CardWithPin>
-                </div>
             </div>
             <Button theme = {ButtonTheme.PRIMARY} className={cls.btn} onClick={onNavigate}>
                 <MyText text={'В каталог'} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>

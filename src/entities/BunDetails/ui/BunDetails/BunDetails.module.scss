@@ -69,3 +69,39 @@
   justify-content: center;
   width: 300px;
 }
+
+@media(max-width: 768px){
+  .BunDetails {
+    flex-direction: column;
+    gap:2rem;
+  }
+
+  .mockImg{
+    height: 300px;
+  }
+
+  .flex{
+    flex-wrap: wrap;
+    gap:1rem;
+  }
+
+  .flexCol{
+    gap:1rem;
+  }
+
+  .title{
+    margin-bottom: .7rem;
+  }
+
+  .Buy{
+    margin-top: 2rem;
+    flex-direction: column;
+    gap:1rem;
+    align-items: start;
+  }
+
+  .item{
+    padding:.5rem;
+    width:110px;
+  }
+}

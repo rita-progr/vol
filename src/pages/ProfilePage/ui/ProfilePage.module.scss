@@ -1,5 +1,5 @@
 .ProfilePage {
-  height: 100vh;
+  min-height: 100vh;
   background: var(--background-main);
   padding: 4rem;
   display: flex;
@@ -31,4 +31,23 @@
   fill: black;
   width: 50px;
   height: 50px;
+}
+
+@media(max-width: 576px){
+  .ProfilePage {
+    padding: 2rem;
+    padding-top:7rem;
+    flex-direction: column;
+    gap:2rem;
+
+    p{
+      font-size: var(--font-size-u)
+    }
+
+    .card{
+      gap:2rem;
+    }
+
+  }
+
 }

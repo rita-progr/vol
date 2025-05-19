@@ -1,7 +1,7 @@
 import cls from './AdminPanel.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
-import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
+import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {SelectBakery} from "entities/Bakery";
 import {Link} from "react-router-dom";
 
@@ -36,7 +36,7 @@ const AdminPanel = ({className}: AdminPanelProps) => {
             <div className={cls.AdminPanelItems}>
                 {items.map((item=>(
                     <Link to={item.path} key={item.title} className={cls.itemCard}>
-                            <MyText text={item.title} size={TextSize.XLARGE}/>
+                            <MyText text={item.title} size={TextSize.XLARGE} align={TextAlign.CENTER}/>
                     </Link>
                 )))}
             </div>

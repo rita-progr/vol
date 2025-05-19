@@ -13,3 +13,10 @@
 .back{
   fill: #000;
 }
+
+@media(max-width: 576px){
+  .OrderGoods {
+    padding: 5rem 2rem;
+
+  }
+}

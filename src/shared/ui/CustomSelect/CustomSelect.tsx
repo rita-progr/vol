@@ -23,7 +23,7 @@ export const CustomSelect = ({className, value, onChange, label, menuItems}: Cus
 
     return (
         <div className={classNames(cls.CustomSelect, {}, [className])}>
-            <Box sx={{ minWidth: 350, width: '100%' }} >
+            <Box sx={{ minWidth: 200, width: '100%' }} >
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">{label}</InputLabel>
                     <Select

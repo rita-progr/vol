@@ -53,3 +53,12 @@
 .inp{
   width:65px;
 }
+
+@media(max-width:576px){
+
+  .flex{
+    flex-direction: column;
+    //justify-content: start;
+  }
+
+}

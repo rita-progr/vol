@@ -38,11 +38,14 @@ const GoodsPage = ({className}: GoodsPageProps) => {
 
     return (
         <div className={classNames(cls.GoodsPage, {}, [className])}>
-            <Back onClick = {onNavigate} className={cls.back}/>
+            <div className={cls.flex} onClick={onNavigate}>
+                <Back className={cls.back}/>
+                {/*<MyText text={'Назад'} size={TextSize.EXTRA_SMALL} theme={TextTheme.SECONDARY}/>*/}
+            </div>
             <MyText title={title}
-                    size = {TextSize.LARGE}
+                    size={TextSize.LARGE}
                     align={TextAlign.CENTER}
-                    theme = {TextTheme.SECONDARY}
+                    theme={TextTheme.SECONDARY}
                     className={cls.text}/>
             <BunItems addItemToCart={addItemToCart}/>
         </div>
