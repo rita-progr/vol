@@ -3,11 +3,15 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
-import {Link} from "react-router-dom";
-import {RoutePath} from "shared/config/route/routeConfig.tsx";
 import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
 import {AuthReducer} from "features/Authorization/model/slices/AuthSlices.ts";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
+import {
+    useFetchConfirmCodeMutation,
+
+} from "features/Authorization/api/AuthorizationApi.tsx";
+import {useNavigate} from "react-router-dom";
+import {RoutePath} from "shared/config/route/routeConfig.tsx";
 
 interface AuthorizationFormCodeProps {
     className?: string;
@@ -18,31 +22,49 @@ const reducers: ReducersList = {
 }
 
 export const AuthorizationFormCode = ({className}: AuthorizationFormCodeProps) => {
-    const [code, setCode] = useState(['', '', '', '']);
+    const [confirmCode, { isLoading, isError }] = useFetchConfirmCodeMutation();
+    const [codeLocal, setCodeLocal] = useState(['', '', '', '']);
+    const navigate = useNavigate();
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = e.target.value;
 
         if (/\d/.test(value) || value === '') {
-            const newCode = [...code];
+            const newCode = [...codeLocal];
             newCode[index] = value;
-            setCode(newCode);
-
-            // Автофокус на следующее поле
+            setCodeLocal(newCode);
             if (value && index < 3) {
                 inputRefs.current[index + 1]?.focus();
             }
         }
     };
 
+    const handleSubmit = useCallback(async () => {
+        const code = codeLocal.join('');
+        const method = 'Post';
+        const email = JSON.parse(localStorage.getItem('email') ?? "");
+        try {
+            const response = await confirmCode({ email, code, method  }).unwrap();
+            console.log(response);
+            if(response.success){
+                navigate(RoutePath.main);
+            }
+
+        } catch (error) {
+            console.error('Ошибка входа', error);
+        }
+    },[codeLocal, confirmCode, navigate])
+
+
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-        if (e.key === 'Backspace' && !code[index] && index > 0) {
+        if (e.key === 'Backspace' && !codeLocal[index] && index > 0) {
             inputRefs.current[index - 1]?.focus();
         }
     };
 
-    // Эффект для фокуса на первом поле при монтировании
     useEffect(() => {
         inputRefs.current[0]?.focus();
     }, []);
@@ -56,7 +78,7 @@ export const AuthorizationFormCode = ({className}: AuthorizationFormCodeProps) =
                         className={cls.title}/>
 
                 <div className={cls.code}>
-                    {code.map((digit, index) => (
+                    {codeLocal.map((digit, index) => (
                         <Input
                             key={index}
                             ref={(el) => (inputRefs.current[index] = el)}
@@ -74,8 +96,8 @@ export const AuthorizationFormCode = ({className}: AuthorizationFormCodeProps) =
                 </div>
 
                 <div className={cls.btnCont}>
-                    <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={() => console.log()}>
-                        <MyText text={'Войти'} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
+                    <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={handleSubmit}>
+                        <MyText text={'Отправить код'} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
                     </Button>
                 </div>
 

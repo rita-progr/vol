@@ -3,7 +3,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
 import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
 import {AuthActions, AuthReducer} from "../../model/slices/AuthSlices.ts";
@@ -32,9 +32,10 @@ export const AuthorizationForm = ({className}: AuthorizationFormProps) => {
     const [localPassword,setLocalPassword] = useState<string>();
     const email = useSelector(getAuthEmail);
     const password = useSelector(getAuthPassword);
+    const navigate = useNavigate();
     const validateError = useSelector(getValidateError);
-    const debouncedEmail = useDebounce(localEmail, 2000)
-    const debouncedPassword = useDebounce(localPassword, 2000)
+    const debouncedEmail = useDebounce(localEmail, 500)
+    const debouncedPassword = useDebounce(localPassword, 500)
     const [loginUser, { isLoading, isError }] = useLoginUserMutation();
 
     useEffect(() => {
@@ -69,7 +70,10 @@ export const AuthorizationForm = ({className}: AuthorizationFormProps) => {
         e.preventDefault();
         try {
             const response = await loginUser({ email, password }).unwrap();
-            Cookies.set(USER_COOKIES_KEY, response.token)
+            console.log(response)
+            if(response){
+                navigate(RoutePath.main);
+            }
         } catch (error) {
             console.error('Ошибка входа', error);
         }

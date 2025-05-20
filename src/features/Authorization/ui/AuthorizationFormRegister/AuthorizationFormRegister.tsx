@@ -3,13 +3,11 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
-import {Link} from "react-router-dom";
+import {Link, Route, useNavigate} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
 import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
 import {AuthActions, AuthReducer} from "../../model/slices/AuthSlices.ts";
 import {useRegisterUserMutation} from "../../api/AuthorizationApi.tsx";
-import Cookies from "js-cookie";
-import {USER_COOKIES_KEY} from "shared/const/const.ts";
 import {LoadingPage} from "pages/LoadingPage";
 import {useSelector} from "react-redux";
 import {
@@ -34,6 +32,7 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
     const [registerUser, {isLoading, isError}] = useRegisterUserMutation();
     const email = useSelector(getAuthEmail);
     const password = useSelector(getAuthPassword);
+    const navigate = useNavigate();
     const repeatPassword = useSelector(getAuthRepeatPassword)
     const dispatch = useAppDispatch();
     const validateError = useSelector(getValidateError);
@@ -75,7 +74,11 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
         e.preventDefault();
         try {
             const response = await registerUser({ email, password }).unwrap();
-            Cookies.set(USER_COOKIES_KEY, response.token)
+            localStorage.setItem('email', JSON.stringify(email));
+            console.log(response);
+            if(response.success){
+                navigate(RoutePath.code)
+            }
         } catch (error) {
             console.error('Ошибка регистрации', error);
         }

@@ -44,7 +44,7 @@ const GoodsPage = ({className}: GoodsPageProps) => {
                     align={TextAlign.CENTER}
                     theme={TextTheme.SECONDARY}
                     className={cls.text}/>
-            <BunItems addItemToCart={addItemToCart}/>
+            <BunItems addItemToCart={addItemToCart} category={''}/>
         </div>
     )
 }

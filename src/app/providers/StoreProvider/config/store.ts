@@ -5,6 +5,7 @@ import {createReducerManager} from "./reduxManager.ts";
 import {$api} from "shared/api/api.ts";
 import {CartReducer} from "features/Cart";
 import {rtkApi} from "shared/api/rtkApi.tsx";
+import {ProfileReducer} from "entities/Profile";
 
 export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  ReducersMapObject<StateSchema>)=>{
 
@@ -15,6 +16,7 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  Re
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         sideBar: sideBarReducer,
+        profile: ProfileReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
         cart: CartReducer
     }

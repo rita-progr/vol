@@ -11,7 +11,7 @@ export const rtkApi = createApi({
         prepareHeaders: headers => {
             const token = Cookies.get(USER_COOKIES_KEY || '');
             if(token){
-                headers.set('Authorization', token);
+                headers.set('Authorization',`Bearer ${token}`);
             }
         } }),
     endpoints: (build) => ({

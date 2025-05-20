@@ -8,6 +8,9 @@ import {useSelector} from "react-redux";
 import {getCollapsed} from "../../model/selectors/getSidebar.ts";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch.tsx";
 import {sideBarActions} from "widgets/Sidebar";
+import {Logout} from "features/Authorization";
+import {USER_COOKIES_KEY} from "shared/const/const.ts";
+import Cookies from "js-cookie";
 
 interface SideBarProps {
     className?: string;
@@ -28,7 +31,7 @@ const itemsList:ItemsListInterface[] = [
     },
     {
         id:3,
-        path: RoutePath.main,
+        path: RoutePath.cart,
         title: 'Корзина',
         className: ''
     },
@@ -43,18 +46,13 @@ const itemsList:ItemsListInterface[] = [
         path: RoutePath.admin,
         title: 'Админка',
         className: ''
-    },
-    {
-        id:6,
-        path: RoutePath.main,
-        title: 'Выйти',
-        className: ''
     }
 ]
 
 export const SideBar = ({className}: SideBarProps) => {
     const dispatch = useAppDispatch();
-    const collapsed = useSelector(getCollapsed)
+    const collapsed = useSelector(getCollapsed);
+    const token = Cookies.get(USER_COOKIES_KEY)
 
     const onCloseSideBar = useCallback(() => {
         dispatch(sideBarActions.toggleCollapsed(false))
@@ -62,14 +60,20 @@ export const SideBar = ({className}: SideBarProps) => {
 
     return (
         <>
+            {token && token.length > 0 && (
                 <div className={classNames(cls.SideBar, {[cls.collapsed]: collapsed})}>
-                    <div className={cls.items}>
+                <div className={cls.items}>
+                    <>
                         {itemsList.map(item=>(
                             <SideBarItems key = {item.id} item={item} onClick = {onCloseSideBar}/>
                         ))}
-                    </div>
+                        <Logout/>
+                    </>
 
+               ` </div>
                 </div>
+            )}
+
         </>
     )
 }

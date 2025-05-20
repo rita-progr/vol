@@ -4,8 +4,20 @@
   background: var(--background-main);
 }
 
+.title{
+  margin-bottom: 3rem;
+}
+
+.back{
+  fill: black;
+}
+
 @media(max-width: 576px){
   .HistoryOrderPage {
     padding: 5rem 2rem;
+  }
+
+  .title{
+    margin-bottom: 2rem;
   }
 }

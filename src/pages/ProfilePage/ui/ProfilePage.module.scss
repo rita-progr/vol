@@ -33,6 +33,19 @@
   height: 50px;
 }
 
+.text{
+  background: #fff;
+  padding:1rem;
+  border:1px solid #c7c7c7;
+  border-radius: 10px;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.text:hover{
+  transform: scale(1.1);
+}
+
 @media(max-width: 576px){
   .ProfilePage {
     padding: 2rem;
