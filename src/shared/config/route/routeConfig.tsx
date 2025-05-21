@@ -14,6 +14,7 @@ import {OrderPage} from "pages/OrderGoodsPage";
 import {HistoryOrderPage} from "pages/HistoryOrderPage";
 import {ErrorPage} from "pages/ErrorPage";
 import {CodeConfirmPage} from "pages/CodeConfirmPage";
+import {AuthBakeryPage} from "pages/AuthBakeryPage";
 
 export enum RouteType {
     MAIN = 'main',
@@ -30,6 +31,7 @@ export enum RouteType {
     ORDER = 'order',
     HISTORY_ORDER = 'history_order',
     CODE = 'code',
+    BAKERY_AUTH = 'bakery_auth',
     NOT_FOUND = 'not-found',
 }
 
@@ -48,6 +50,7 @@ export const RoutePath: Record<RouteType,string> = {
     [RouteType.ABOUT]: '/about',
     [RouteType.ORDER]: '/order',
     [RouteType.HISTORY_ORDER]: '/history_order',
+    [RouteType.BAKERY_AUTH]: '/bakery_auth',
     [RouteType.NOT_FOUND]: '*',
 }
 
@@ -107,6 +110,10 @@ export const RouteConfig:Record<RouteType, RouteProps> = {
     [RouteType.CODE]:{
         path:`${RoutePath.code}`,
         element:<CodeConfirmPage/>
+    },
+    [RouteType.BAKERY_AUTH]:{
+        path:`${RoutePath["bakery_auth"]}`,
+        element:<AuthBakeryPage/>
     },
     [RouteType.NOT_FOUND]:{
         path:`${RoutePath["not-found"]}`,

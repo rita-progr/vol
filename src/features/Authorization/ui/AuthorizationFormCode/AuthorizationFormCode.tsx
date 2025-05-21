@@ -3,8 +3,6 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
-import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
-import {AuthReducer} from "features/Authorization/model/slices/AuthSlices.ts";
 import {useCallback, useEffect, useRef, useState} from "react";
 import {
     useFetchConfirmCodeMutation,
@@ -17,9 +15,6 @@ interface AuthorizationFormCodeProps {
     className?: string;
 }
 
-const reducers: ReducersList = {
-    auth: AuthReducer
-}
 
 export const AuthorizationFormCode = ({className}: AuthorizationFormCodeProps) => {
     const [confirmCode, { isLoading, isError }] = useFetchConfirmCodeMutation();
@@ -70,7 +65,6 @@ export const AuthorizationFormCode = ({className}: AuthorizationFormCodeProps) =
     }, []);
 
     return (
-        <DynemicModuleLoader reducers={reducers}>
             <div className={classNames(cls.AuthorizationFormCode, {}, [className])}>
                 <MyText text={'Введите код'}
                         size={TextSize.XMEDIUM}
@@ -102,7 +96,6 @@ export const AuthorizationFormCode = ({className}: AuthorizationFormCodeProps) =
                 </div>
 
             </div>
-        </DynemicModuleLoader>
 
     )
 }

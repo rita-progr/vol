@@ -15,16 +15,16 @@ const item:GoodsItem = {
         description: 'Неотбеленная органическая пшеничная мука, цельнозерновая ржаная мука, вода, морская соль, дрожжи',
         img:'',
         price: 500,
-        protein: 30,
+        proteins: 30,
         calories: 400,
         fats: 30,
-        carb: 100,
+        carbohydrates: 100,
         composition: 'Вода, соль, масло'
     }
 
 
 export const BunDetails = ({className, id}: BunDetailsProps) => {
-    const {img, carb, fats, protein, title, description, price, calories, composition} = item;
+    const {img, carbohydrates, fats, proteins, title, description, price, calories, composition} = item;
     if(!item){
         return   <div className={classNames(cls.BunDetails, {}, [className])}>
                     <MyText title={'Товар не найден'} size={TextSize.XMEDIUM}/>
@@ -47,7 +47,7 @@ export const BunDetails = ({className, id}: BunDetailsProps) => {
                     <div className={cls.flex}>
                         <div className={cls.item}>
                             <MyText text={'Белки'} size={TextSize.SMALL}/>
-                            <MyText text={`${protein} г`} size={TextSize.MEDIUM}/>
+                            <MyText text={`${proteins} г`} size={TextSize.MEDIUM}/>
                         </div>
                         <div className={cls.item}>
                             <MyText text={'Жиры'} size={TextSize.SMALL}/>
@@ -55,7 +55,7 @@ export const BunDetails = ({className, id}: BunDetailsProps) => {
                         </div>
                         <div className={cls.item}>
                             <MyText text={'Углеводы'} size={TextSize.SMALL}/>
-                            <MyText text={`${carb} г`} size={TextSize.MEDIUM}/>
+                            <MyText text={`${carbohydrates} г`} size={TextSize.MEDIUM}/>
                         </div>
                         <div className={cls.item}>
                             <MyText text={'Ккал'} size={TextSize.SMALL}/>

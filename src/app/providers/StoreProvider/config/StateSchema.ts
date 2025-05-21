@@ -6,12 +6,16 @@ import {CartSchema} from "features/Cart";
 import {AuthSchema} from "features/Authorization";
 import {rtkApi} from "shared/api/rtkApi.tsx";
 import {Profile} from "entities/Profile";
+import {PlaceAnOrderSchema} from "features/PlaceAnOrder";
+import {OrderSchema} from "features/OrderManagment";
 
 export interface StateSchema {
     sideBar: SideBarSchema
     cart: CartSchema
     profile: Profile
-    auth?: AuthSchema
+    order: PlaceAnOrderSchema
+    auth: AuthSchema
+    adminOrder: OrderSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 }
 

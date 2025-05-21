@@ -22,7 +22,7 @@ export const MainPageBakery = ({className}: MainPageBakeryProps) => {
     return (
         <div className={classNames(cls.MainPageBakery, {}, [className])}>
             <MyText title = {'Наш хлеб'} align={TextAlign.CENTER} size={TextSize.LARGE} theme={TextTheme.SECONDARY} className={cls.text}/>
-            <BunItems addItemToCart={addItemToCart} />
+            <BunItems addItemToCart={addItemToCart} category={'Хлеб'} />
         </div>
     )
 }

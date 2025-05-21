@@ -110,7 +110,10 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
                             <MyText text={'Войти'} size={TextSize.EXTRA_SMALL} className={cls.textLink}/>
                         </Link>
                         /
-                        <MyText text={'Войти как пекарня'} size={TextSize.EXTRA_SMALL} className={cls.textLink}/>
+                        <Link to = {RoutePath.bakery_auth} >
+                            <MyText text={'Войти как пекарня'} size={TextSize.EXTRA_SMALL} className={cls.textLink}/>
+                        </Link>
+
                     </div>
 
                 </div>

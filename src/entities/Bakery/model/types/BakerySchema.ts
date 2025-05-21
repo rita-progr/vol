@@ -1,5 +1,8 @@
 export interface BakerySchema {
-    isLoading?: boolean;
-    error?: string | null;
-    bakeries?: string[];
+    bakery:IBakery[]
+}
+
+export interface IBakery {
+    id:string;
+    address:string;
 }

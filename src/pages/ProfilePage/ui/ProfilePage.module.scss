@@ -1,12 +1,20 @@
 .ProfilePage {
-  min-height: 100vh;
-  background: var(--background-main);
-  padding: 4rem;
   display: flex;
   justify-content: space-between;
   gap:4rem;
   align-items: center;
   width: 100%;
+}
+
+.Profile{
+  min-height: 100vh;
+  background: var(--background-main);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:2rem;
+  justify-content: center;
 }
 
 .content{
@@ -47,9 +55,8 @@
 }
 
 @media(max-width: 576px){
-  .ProfilePage {
+  .Profile, .ProfilePage {
     padding: 2rem;
-    padding-top:7rem;
     flex-direction: column;
     gap:2rem;
 
@@ -61,6 +68,10 @@
       gap:2rem;
     }
 
+  }
+
+  .Profile{
+    padding-top:7rem;
   }
 
 }

@@ -1,6 +1,7 @@
 import cls from './CustomSelect.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 import {Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
+import {IBakery} from "entities/Bakery/model/types/BakerySchema.ts";
 
 export interface IMenuItem{
     value: string;
@@ -12,7 +13,7 @@ interface CustomSelectProps {
     value?: string;
     onChange: (value: string) => void;
     label: string;
-    menuItems?: IMenuItem[]
+    menuItems?: IBakery[]
 }
 
 export const CustomSelect = ({className, value, onChange, label, menuItems}: CustomSelectProps) => {
@@ -35,7 +36,7 @@ export const CustomSelect = ({className, value, onChange, label, menuItems}: Cus
                         onChange={handleChange}
                     >
                         {menuItems && menuItems.map((item)=>(
-                            <MenuItem value={item.value} className={cls.selectItem}>{item.text}</MenuItem>
+                            <MenuItem value={item.id} className={cls.selectItem}>{item.address}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>

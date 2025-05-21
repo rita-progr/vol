@@ -44,6 +44,12 @@
 
 }
 
+.active{
+  p{
+    color: #3CB400;
+  }
+}
+
 @media(max-width:576px){
   .modal{
     width: 200px;

@@ -29,10 +29,6 @@ const AdminPanel = ({className}: AdminPanelProps) => {
     return (
         <div className={classNames(cls.AdminPanel, {}, [className])}>
             <MyText title={'Админка'} size={TextSize.XLARGE}/>
-            <div className={cls.choiceElement}>
-                <MyText text={'Выберите пекарню'} size={TextSize.XLARGE}/>
-                <SelectBakery/>
-            </div>
             <div className={cls.AdminPanelItems}>
                 {items.map((item=>(
                     <Link to={item.path} key={item.title} className={cls.itemCard}>

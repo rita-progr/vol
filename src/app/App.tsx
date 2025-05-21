@@ -18,8 +18,8 @@ export const App = () => {
         setToken(token ?? '');
     },[token])
 
-    // if(token){
-    //     navigate(RoutePath.register)
+    // if(!token){
+    //     navigate(RoutePath.register || RoutePath.login || RoutePath.bakery_auth)
     // }
 
     return (

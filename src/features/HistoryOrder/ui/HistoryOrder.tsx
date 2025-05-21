@@ -4,7 +4,7 @@ import {HistoryItem} from "features/HistoryOrder/ui/HistoryItem/HistoryItem.tsx"
 import {useGetOrdersQuery} from "features/HistoryOrder/api/HistoryOrderApi.tsx";
 import {LoadingPage} from "pages/LoadingPage";
 import {useEffect, useState} from "react";
-import {HistoryOrderSchema} from "../model/types/HistoryOrderSchema.tsx";
+import {HistoryOrderSchema, Orders} from "../model/types/HistoryOrderSchema.tsx";
 import {MyText} from "shared/ui/MyText/MyText.tsx";
 
 interface HistoryOrderProps {
@@ -77,13 +77,14 @@ interface HistoryOrderProps {
 export const HistoryOrder = ({className}: HistoryOrderProps) => {
 
     const {isLoading, data} = useGetOrdersQuery();
-    const [items, setItems] = useState<HistoryOrderSchema[]>()
+    const [items, setItems] = useState<Orders[]>()
 
     useEffect(() => {
         if(data){
-            setItems(data)
+            setItems(data.orders);
         }
     }, [data]);
+
 
     if(isLoading){
         return <LoadingPage/>
@@ -91,7 +92,7 @@ export const HistoryOrder = ({className}: HistoryOrderProps) => {
 
     return (
         <div className={classNames(cls.HistoryOrder, {}, [className])}>
-            {items ? items.map(item=>(
+            {items && items.length > 0 ? items.map(item=>(
                 <HistoryItem date={item.createdAt} ordersInfo={item.orderInfo} price={item.price} key={item.id}/>
             )) : <MyText text = {'Заказы не найдены'}/>}
         </div>

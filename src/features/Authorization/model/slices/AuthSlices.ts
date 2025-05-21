@@ -4,7 +4,10 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 const initialState: AuthSchema = {
     isLoading: false,
     error: null,
-    validateErrors:{}
+    validateErrors:{},
+    bakeryId:'',
+    password:'',
+    email:'',
 }
 
 const authSlice = createSlice({
@@ -22,6 +25,9 @@ const authSlice = createSlice({
         },
         setErrors: (state, action: PayloadAction<{ email?: string; password?: string , repeatPassword?:string}>) => {
             state.validateErrors = action.payload;
+        },
+        setBakeryId: (state, action) => {
+            state.bakeryId = action.payload;
         },
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;

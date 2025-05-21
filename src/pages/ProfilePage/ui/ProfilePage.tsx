@@ -18,25 +18,28 @@ interface ProfilePageProps {
 const ProfilePage = ({className}: ProfilePageProps) => {
     const [open,setOpen] = useState(false);
     return (
-        <div className={classNames(cls.ProfilePage, {}, [className])}>
+        <div className={cls.Profile}>
             <Button className={cls.text} onClick={() => setOpen(true)}>
                 <MyText text={'Редактировать профиль'} size={TextSize.USERNAME}/>
             </Button>
-            <ProfileCard firstName={"Рита"} className={cls.card}/>
-            <div className={cls.card}>
-                <Link to={RoutePath.history_order}  className={cls.history} >
-                    <CardWithPin className={cls.history}>
-                        <MyText text={"История заказов"} size={TextSize.LARGE}/>
-                        <Time/>
-                    </CardWithPin>
-                </Link>
-                <Link to={RoutePath.cart}  className={cls.history} >
-                    <CardWithPin className={cls.history}>
-                        <MyText text={"В корзину"} size={TextSize.LARGE}/>
-                        <Cart className = {cls.cart}/>
-                    </CardWithPin>
-                </Link>
+            <div className={classNames(cls.ProfilePage, {}, [className])}>
+                <ProfileCard  className={cls.card}/>
+                <div className={cls.card}>
+                    <Link to={RoutePath.history_order}  className={cls.history} >
+                        <CardWithPin className={cls.history}>
+                            <MyText text={"История заказов"} size={TextSize.LARGE}/>
+                            <Time/>
+                        </CardWithPin>
+                    </Link>
+                    <Link to={RoutePath.cart}  className={cls.history} >
+                        <CardWithPin className={cls.history}>
+                            <MyText text={"В корзину"} size={TextSize.LARGE}/>
+                            <Cart className = {cls.cart}/>
+                        </CardWithPin>
+                    </Link>
+                </div>
             </div>
+
             <EditCard isOpen={open} onClose={()=>setOpen(false)}/>
         </div>
     )

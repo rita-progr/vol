@@ -4,6 +4,10 @@ interface OrderInfo{
 }
 
 export interface HistoryOrderSchema {
+    orders: Orders[]
+}
+
+export interface Orders {
     id: string;
     orderInfo:OrderInfo[];
     price:string;

@@ -1,18 +1,30 @@
 export interface OrderManagmentSchema {
     isLoading?: boolean;
     error?: string | null;
-
+    orders: IOrder[];
 }
 
 export interface IOrder{
-    id: number;
-    orderNumber: number;
-    time?: string;
-    ingredients?: string[];
+    id: string;
+    createdAt?: string;
+    orderInfo?: OrderInfo[];
     price: number;
-    status?: string;
+    status: string;
 }
 
-/**
- * сделаю через ids[]
- * */
+export interface OrderInfo {
+    name:string;
+    price:string;
+    quantity: string;
+}
+
+export interface OrderSchema{
+    filter?: FilterEnum
+}
+
+export enum FilterEnum{
+    ALL = 'Все заказы',
+    PENDING = 'В обработке',
+    READY = 'Готовы'
+}
+

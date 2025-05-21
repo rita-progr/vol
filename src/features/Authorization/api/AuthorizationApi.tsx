@@ -75,6 +75,13 @@ const AuthorizationApi = rtkApi.injectEndpoints({
                     accessToken: accessToken
                 }
             })
+        }),
+        loginBakery: build.mutation({
+            query:({bakeryId, password})=>({
+                url: '/auth/immediately-login',
+                method: 'POST',
+                body:{bakeryId, password}
+            })
         })
     })
 })
@@ -83,5 +90,6 @@ export const {
     useRegisterUserMutation,
     useFetchConfirmCodeMutation,
     useLogoutUserMutation,
-    useLoginUserMutation
+    useLoginUserMutation,
+    useLoginBakeryMutation
 } = AuthorizationApi

@@ -5,7 +5,9 @@ export interface AuthSchema {
     repeatPassword?: string;
     isLoading?: boolean;
     error?: string | null;
-    validateErrors?: ValidateErrors
+    validateErrors?: ValidateErrors;
+    bakeryId?: string;
+
 }
 
 export interface ValidateErrors{

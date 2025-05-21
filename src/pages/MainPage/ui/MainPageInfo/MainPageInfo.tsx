@@ -3,8 +3,10 @@ import {classNames} from "shared/lib/classNames/classNames";
 
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Button, ButtonRadius, ButtonTheme} from "shared/ui/Button/Button.tsx";
-import { useRef, useState} from "react";
+import {useCallback, useRef, useState} from "react";
 import {useObserver} from "shared/lib/hooks/useObserver.ts";
+import {useNavigate} from "react-router-dom";
+import {RoutePath} from "shared/config/route/routeConfig.tsx";
 
 interface MainPageInfoProps {
     className?: string;
@@ -13,11 +15,16 @@ interface MainPageInfoProps {
 const MainPageInfo = ({className}: MainPageInfoProps) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
 
     useObserver({
         ref:ref,
         setIsVisible: setIsVisible
     })
+
+    const onAnotherPage = useCallback((nav: string) => {
+        navigate(nav);
+    },[navigate])
 
     return (
         <div className={classNames(cls.MainPageInfo, {}, [className])} ref={ref}>
@@ -33,10 +40,17 @@ const MainPageInfo = ({className}: MainPageInfoProps) => {
                             size = {TextSize.MEDIUM}
                             align={TextAlign.CENTER}/>
                     <div className={cls.btns}>
-                        <Button theme={ButtonTheme.PRIMARY} radius = {ButtonRadius.SMALL} className={classNames(cls.btn,{[cls.btnOne]:isVisible},)}>
+                        <Button theme={ButtonTheme.PRIMARY}
+                                radius = {ButtonRadius.SMALL}
+                                className={classNames(cls.btn,{[cls.btnOne]:isVisible})}
+                                onClick={()=>onAnotherPage(RoutePath.catalog)}
+                        >
                             <MyText text = {'Посмотреть полное меню'}/>
                         </Button>
-                        <Button theme={ButtonTheme.SECONDARY} className={classNames(cls.btn,{[cls.btnTwo]:isVisible},)}>
+                        <Button
+                            theme={ButtonTheme.SECONDARY}
+                                onClick={()=>onAnotherPage(RoutePath.cart)}
+                                className={classNames(cls.btn,{[cls.btnTwo]:isVisible},)}>
                             <MyText text = {'Заказать сейчас'} align={TextAlign.CENTER}/>
                         </Button>
                     </div>

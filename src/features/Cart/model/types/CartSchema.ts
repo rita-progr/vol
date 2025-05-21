@@ -1,15 +1,15 @@
 
 export interface GoodsItem{
-    id: number;
+    id: string;
     img?: string;
-    title: string;
-    price: number;
-    count?: number;
+    name: string;
+    price: string;
+    count?: string;
     description?: string;
-    protein?: number;
-    fats?: number;
-    carb?: number;
-    calories?: number;
+    proteins?: string;
+    fats?: string;
+    carbohydrates?: string;
+    calories?: string;
     composition?: string;
 }
 

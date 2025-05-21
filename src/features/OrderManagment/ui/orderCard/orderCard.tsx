@@ -13,24 +13,33 @@ interface orderCardProps extends IOrder{
 export const OrderCard = (props: orderCardProps) => {
 
     const {
+        id,
         className,
-        orderNumber,
-        time,
+        createdAt,
         price,
         status,
-        ingredients,
+        orderInfo,
     } = props;
 
     return (
         <div className={classNames(cls.orderCard, {}, [className])}>
             <PushPin className = {cls.pushPin}/>
             <PinPain className = {cls.pinPain}/>
-                <MyText text = {`Номер заказа: ${orderNumber}`} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
-                <MyText text = {`Время заказа: ${time}`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
-                <MyText text = {`Детали заказа: ${ingredients}`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
-                <MyText text = {`Цена заказа: ${price}`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
-                <MyText text = {`Статус заказа:`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
-                <Button className={cls.btn}>
+                <MyText text = {`Номер заказа: ${id}`} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
+                <MyText text = {`Время заказа: ${createdAt}`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
+                <div className={cls.flex}>
+                    <MyText text = {`Детали заказа:`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
+                    {orderInfo && orderInfo.map(item=>(
+                        <MyText text ={`${item.name} - ${item.quantity} шт.`}/>
+                    ))}
+                </div>
+
+                <MyText text = {`Цена заказа: ${price} р`} size={TextSize.SMALL} align={TextAlign.CENTER}/>
+                <MyText text = {`Статус заказа:`}
+                        size={TextSize.SMALL}
+                        align={TextAlign.CENTER}/>
+                <Button className={classNames(cls.btn, {})}
+                >
                     <MyText text={status} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
                 </Button>
         </div>

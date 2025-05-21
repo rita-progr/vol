@@ -14,8 +14,6 @@ import {getAuthEmail, getAuthPassword, getValidateError} from "../../model/selec
 import {validateAuthForm} from "../../model/services/validateData/validateData.tsx";
 import {useDebounce} from "shared/lib/hooks/useDebounce.tsx";
 import {useLoginUserMutation} from "../../api/AuthorizationApi.tsx";
-import Cookies from "js-cookie";
-import {USER_COOKIES_KEY} from "shared/const/const.ts";
 import {LoadingPage} from "pages/LoadingPage";
 
 interface AuthorizationFormProps {
@@ -84,7 +82,6 @@ export const AuthorizationForm = ({className}: AuthorizationFormProps) => {
     }
 
     return (
-        <DynemicModuleLoader reducers={reducers}>
             <div className={classNames(cls.AuthorizationForm, {}, [className])}>
                 <MyText text={'Вход в систему'}
                         size={TextSize.XMEDIUM}
@@ -114,7 +111,6 @@ export const AuthorizationForm = ({className}: AuthorizationFormProps) => {
                 </div>
 
             </div>
-        </DynemicModuleLoader>
 
     )
 }

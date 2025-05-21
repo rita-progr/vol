@@ -10,7 +10,7 @@ interface AdminOrdersProps {
 const AdminOrders = ({className}: AdminOrdersProps) => {
     return (
         <div className={classNames(cls.AdminOrders, {}, [className])}>
-            <MyText title={`Пекарня № ${122}`} size={TextSize.XLARGE} align={TextAlign.CENTER}/>
+            <MyText title={`Заказы пекарни`} size={TextSize.XLARGE} align={TextAlign.CENTER}/>
             <OrderFilter/>
             <OrdersList/>
         </div>
