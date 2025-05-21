@@ -1,7 +1,7 @@
 
 export interface GoodsItem{
     id: string;
-    img?: string;
+    photo?: string;
     name: string;
     price: string;
     count?: string;

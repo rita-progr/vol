@@ -6,197 +6,203 @@ import {useGetAllOrdersQuery} from "features/OrderManagment/api/OrderManagmentAp
 import {getOrderFilter} from "../../model/selectrors/getOrdersSelectors.tsx";
 import {useSelector} from "react-redux";
 import {useMemo} from "react";
+import {LoadingPage} from "pages/LoadingPage";
 
 interface ordersListProps {
     className?: string;
 }
 
-const data: IOrder[] = [
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'Готово',
-    },
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'Готово',
-    },
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'Готово',
-    },
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'Готово',
-    },
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'Готово',
-    },
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'В обработке',
-    },  {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'Готово',
-    },
-    {
-        id:'1',
-        orderInfo: [{
-            price:'500',
-            quantity: '3',
-            name: 'Булка'
-        },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            },
-            {
-                price:'500',
-                quantity: '3',
-                name: 'Булка'
-            }],
-        createdAt:'2022-01-31 18:00',
-        price: 400,
-        status: 'В обработке',
-    },
-]
+// const data: IOrder[] = [
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'Готово',
+//     },
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'Готово',
+//     },
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'Готово',
+//     },
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'Готово',
+//     },
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'Готово',
+//     },
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'В обработке',
+//     },  {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'Готово',
+//     },
+//     {
+//         id:'1',
+//         orderInfo: [{
+//             price:'500',
+//             quantity: '3',
+//             name: 'Булка'
+//         },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             },
+//             {
+//                 price:'500',
+//                 quantity: '3',
+//                 name: 'Булка'
+//             }],
+//         createdAt:'2022-01-31 18:00',
+//         price: 400,
+//         status: 'В обработке',
+//     },
+// ]
 
 export const OrdersList = ({className}: ordersListProps) => {
     const filter = useSelector(getOrderFilter);
-    // const {isLoading, isError, data} = useGetAllOrdersQuery();
+    const {isLoading, isError, data} = useGetAllOrdersQuery();
 
+    console.log(data)
     const filteredData = useMemo(() => {
         if (!data) return [];
 
         switch (filter) {
             case 'Готовы':
-                return data.filter(order => order.status === 'Готово');
+                return data.orders.filter(order => order.status === 'Готово');
             case 'В обработке':
-                return data.filter(order => order.status === 'В обработке');
+                return data.orders.filter(order => order.status === 'В обработке');
             default:
-                return data;
+                return data.orders;
         }
-    }, [filter]);
+    }, [data, filter]);
+
+    if(isLoading){
+        return <LoadingPage/>
+    }
 
     return (
         <div className={classNames(cls.ordersList, {}, [className])}>

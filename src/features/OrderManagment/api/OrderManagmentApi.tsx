@@ -5,7 +5,7 @@ export const OrderManagmentApi = rtkApi.injectEndpoints({
     endpoints: (build)=>({
         getAllOrders: build.query<OrderManagmentSchema, void>({
             query:()=>({
-                url: '/client/get-orders',
+                url: '/bakery/get-all-orders',
                 method: 'POST',
             })
         }),

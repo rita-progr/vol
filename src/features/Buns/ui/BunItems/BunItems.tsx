@@ -137,7 +137,12 @@ export const BunItems = ({className, addItemToCart, category}: BunItemsProps) =>
         <div className={classNames(cls.BunItems, {}, [className])}>
             {items && items.map(item=>(
                 <Link to = {`${RoutePath.goods_details}${item.id}`} key={item.id}>
-                    <Card title={item.name} description={item?.description ?? ''} key={item.id} addItemToCart={()=>addItemToCart(item)}/>
+                    <Card
+                        title={item.name}
+                        description={item?.description ?? ''}
+                        key={item.id}
+                        img={item.photo}
+                        addItemToCart={()=>addItemToCart(item)}/>
                 </Link>
             ))}
         </div>

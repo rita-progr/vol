@@ -54,13 +54,13 @@ export const SideBar = ({className}: SideBarProps) => {
     const collapsed = useSelector(getCollapsed);
     const token = Cookies.get(USER_COOKIES_KEY)
 
+
     const onCloseSideBar = useCallback(() => {
         dispatch(sideBarActions.toggleCollapsed(false))
     },[dispatch])
 
     return (
         <>
-            {token && token.length > 0 && (
                 <div className={classNames(cls.SideBar, {[cls.collapsed]: collapsed})}>
                 <div className={cls.items}>
                     <>
@@ -72,7 +72,6 @@ export const SideBar = ({className}: SideBarProps) => {
 
                ` </div>
                 </div>
-            )}
 
         </>
     )

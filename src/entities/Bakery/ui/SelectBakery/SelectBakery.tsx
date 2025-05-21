@@ -14,43 +14,22 @@ interface SelectBakeryProps {
     className?: string;
 }
 
-const menuItems = [
-    {
-        id: 'Пекарня1',
-        address: 'Пекарня1'
-    },
-    {
-        id: 'Пекарня2',
-        address: 'Пекарня2'
-    },
-    {
-        id: 'Пекарня3',
-        address: 'Пекарня3'
-    },
-    {
-        id: 'Пекарня4',
-        address: 'Пекарня4'
-    }
-]
-
 export const SelectBakery = ({className}: SelectBakeryProps) => {
     const {isLoading, data} = useBakeryListQuery();
     const dispatch = useAppDispatch();
     const value = useSelector(getAuthBakeryId)
     const [menuItems, setMenuItems] = useState<IBakery[]>()
-    const [selectedValue, setSelectedValue] = useState<string>(value);
 
 
+    console.log(value)
     useEffect(()=>{
-        if(data){
+        if(data?.bakery){
             setMenuItems(data?.bakery)
         }
     },[data])
 
     const handleChange = useCallback((value: string) => {
         dispatch(AuthActions.setBakeryId(value));
-        setSelectedValue(value);
-
     },[dispatch]);
 
     if(isLoading){
@@ -58,6 +37,6 @@ export const SelectBakery = ({className}: SelectBakeryProps) => {
     }
 
     return (
-        <CustomSelect onChange={handleChange} label={'Выберите пекарню'} menuItems={menuItems} value={selectedValue}/>
+        <CustomSelect onChange={handleChange} label={'Выберите пекарню'} menuItems={menuItems} value={value}/>
     )
 }

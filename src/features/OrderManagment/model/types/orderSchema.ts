@@ -28,3 +28,8 @@ export enum FilterEnum{
     READY = 'Готовы'
 }
 
+export enum StatusEnum{
+    READY = 'Готов',
+    PENDING = 'В обработке'
+
+}

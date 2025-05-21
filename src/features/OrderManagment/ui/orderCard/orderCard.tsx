@@ -4,14 +4,17 @@ import PushPin from 'shared/assets/icons/pushpin.svg?react'
 import PinPain from 'shared/assets/icons/pinPain.svg?react';
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Button} from "shared/ui/Button/Button.tsx";
-import {IOrder} from "../../model/types/orderSchema.ts";
+import {IOrder, StatusEnum} from "../../model/types/orderSchema.ts";
 import {useChangeStatusMutation} from "../../api/OrderManagmentApi.tsx";
+import {useCallback, useState} from "react";
+import {Loader} from "shared/ui/Loader/Loader.tsx";
 
 interface orderCardProps extends IOrder{
     className?: string;
 }
 
 export const OrderCard = (props: orderCardProps) => {
+
     const {
         id,
         className,
@@ -21,8 +24,36 @@ export const OrderCard = (props: orderCardProps) => {
         orderInfo,
     } = props;
 
-    const [changeStatus,{isLoading, isError}] = useChangeStatusMutation()
+    const [localStatus, setLocalStatus] = useState(status);
 
+    const [changeStatus,{isLoading, isError}] = useChangeStatusMutation();
+
+
+
+    const onChangeStatus = useCallback(async (id: string)=>{
+        if(localStatus === StatusEnum.PENDING){
+            setLocalStatus(StatusEnum.READY)
+        }else{
+            setLocalStatus(StatusEnum.PENDING )
+        }
+        try{
+            const response = await changeStatus({id, status: localStatus}).unwrap();
+            if(response.success){
+                console.log(response)
+            }
+        }catch(err){
+            console.log(err);
+        }
+
+    },[changeStatus, localStatus])
+
+    if(isLoading){
+        return <Loader/>
+    }
+
+    if(isError){
+        return <MyText text={'Произошла ошибка'} size={TextSize.USERNAME} align={TextAlign.CENTER}/>
+    }
     return (
         <div className={classNames(cls.orderCard, {}, [className])}>
             <PushPin className = {cls.pushPin}/>
@@ -40,7 +71,9 @@ export const OrderCard = (props: orderCardProps) => {
                 <MyText text = {`Статус заказа:`}
                         size={TextSize.SMALL}
                         align={TextAlign.CENTER}/>
-                <Button className={classNames(cls.btn, {})}
+                <Button
+                    className={classNames(cls.btn, {})}
+                    onClick={()=>onChangeStatus(id)}
                 >
                     <MyText text={status} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
                 </Button>
