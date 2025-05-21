@@ -5,13 +5,13 @@ import PinPain from 'shared/assets/icons/pinPain.svg?react';
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Button} from "shared/ui/Button/Button.tsx";
 import {IOrder} from "../../model/types/orderSchema.ts";
+import {useChangeStatusMutation} from "../../api/OrderManagmentApi.tsx";
 
 interface orderCardProps extends IOrder{
     className?: string;
 }
 
 export const OrderCard = (props: orderCardProps) => {
-
     const {
         id,
         className,
@@ -20,6 +20,8 @@ export const OrderCard = (props: orderCardProps) => {
         status,
         orderInfo,
     } = props;
+
+    const [changeStatus,{isLoading, isError}] = useChangeStatusMutation()
 
     return (
         <div className={classNames(cls.orderCard, {}, [className])}>

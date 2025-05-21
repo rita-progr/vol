@@ -20,13 +20,13 @@ const MainPage = ({className}: MainPageProps) => {
     const [token, setToken] = useState("");
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const token = Cookies.get(USER_COOKIES_KEY);
-    //     setToken(token ?? '');
-    //     if(!token){
-    //         navigate(RoutePath.register || RoutePath.login || RoutePath.bakery_auth)
-    //     }
-    // },[navigate, token])
+    useEffect(() => {
+        const token = Cookies.get(USER_COOKIES_KEY);
+        setToken(token ?? '');
+        if(!token){
+            navigate(RoutePath.register || RoutePath.login || RoutePath.bakery_auth)
+        }
+    },[navigate, token])
 
     return (
         <div className={classNames(cls.MainPage, {}, [className])}>

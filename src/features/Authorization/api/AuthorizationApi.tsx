@@ -81,7 +81,23 @@ const AuthorizationApi = rtkApi.injectEndpoints({
                 url: '/auth/immediately-login',
                 method: 'POST',
                 body:{bakeryId, password}
-            })
+            }),
+            async onQueryStarted(_, { queryFulfilled }) {
+                try {
+                    const { meta } = await queryFulfilled;
+
+                    const authHeader = meta?.response?.headers.get('Authorization');
+
+                    if (authHeader && authHeader.startsWith('Bearer ')) {
+                        const token = authHeader.slice(7);
+                        Cookies.remove(USER_COOKIES_KEY);
+                        Cookies.set(USER_COOKIES_KEY, token);
+                        console.log(token);
+                    }
+                } catch (error) {
+                    console.error('Ошибка логина:', error);
+                }
+            }
         })
     })
 })

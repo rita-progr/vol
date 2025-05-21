@@ -8,8 +8,18 @@ export const OrderManagmentApi = rtkApi.injectEndpoints({
                 url: '/client/get-orders',
                 method: 'POST',
             })
+        }),
+        changeStatus: build.mutation({
+            query:({id,status})=>({
+                url: '/bakery/change-order-status',
+                method: 'POST',
+                body: {
+                    id,
+                    status,
+                }
+            })
         })
     })
 })
 
-export const { useGetAllOrdersQuery} = OrderManagmentApi;
+export const { useGetAllOrdersQuery, useChangeStatusMutation} = OrderManagmentApi;

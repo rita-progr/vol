@@ -2,7 +2,7 @@ import cls from './SelectBakery.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 import {CustomSelect} from "shared/ui/CustomSelect/CustomSelect.tsx";
 import { useBakeryListQuery} from "entities/Bakery/api/BakeryApi.tsx";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {IBakery} from "../../model/types/BakerySchema.ts";
 import {LoadingPage} from "pages/LoadingPage";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch.tsx";
@@ -37,8 +37,9 @@ export const SelectBakery = ({className}: SelectBakeryProps) => {
     const {isLoading, data} = useBakeryListQuery();
     const dispatch = useAppDispatch();
     const value = useSelector(getAuthBakeryId)
-    // const [selectedValue, setSelectedValue] = useState<string>(menuItems[0].id);
     const [menuItems, setMenuItems] = useState<IBakery[]>()
+    const [selectedValue, setSelectedValue] = useState<string>(value);
+
 
     useEffect(()=>{
         if(data){
@@ -46,17 +47,17 @@ export const SelectBakery = ({className}: SelectBakeryProps) => {
         }
     },[data])
 
-    const handleChange = (value: string) => {
-        // setSelectedValue(value);
-        console.log(value)
+    const handleChange = useCallback((value: string) => {
         dispatch(AuthActions.setBakeryId(value));
-    };
+        setSelectedValue(value);
+
+    },[dispatch]);
 
     if(isLoading){
         return <LoadingPage/>
     }
 
     return (
-        <CustomSelect onChange={handleChange} label={'Выберите пекарню'} menuItems={menuItems} value={value}/>
+        <CustomSelect onChange={handleChange} label={'Выберите пекарню'} menuItems={menuItems} value={selectedValue}/>
     )
 }

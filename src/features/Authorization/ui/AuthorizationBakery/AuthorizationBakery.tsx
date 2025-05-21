@@ -10,6 +10,7 @@ import {RoutePath} from "shared/config/route/routeConfig.tsx";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {getAuthBakeryId} from "features/Authorization/model/selectors/authSelectors.ts";
+import {BAKERY_ID} from "shared/const/const.ts";
 
 interface AuthorizationBakeryProps {
     className?: string;
@@ -29,10 +30,11 @@ export const AuthorizationBakery = ({className}: AuthorizationBakeryProps) => {
 
     const handleSubmit = useCallback(async () => {
         try {
-            console.log(password, bakeryId);
+            localStorage.setItem(BAKERY_ID, bakeryId);
             const response = await fetchLoginBakery({bakeryId, password}).unwrap();
             console.log(response);
             if(response){
+
                 navigate(RoutePath.main);
             }
 
