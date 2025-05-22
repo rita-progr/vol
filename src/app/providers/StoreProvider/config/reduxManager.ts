@@ -21,7 +21,7 @@ export function createReducerManager(initialReducers:ReducersMapObject<StateSche
                 keysToRemove = []
             }
 
-            // @ts-expect-error: This is type for reduxManager, idk how fix it
+            // @ts-ignore
             return combinedReducer(state, action)
         },
 
