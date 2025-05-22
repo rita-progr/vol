@@ -8,6 +8,7 @@ import {IOrder, StatusEnum} from "../../model/types/orderSchema.ts";
 import {useChangeStatusMutation} from "../../api/OrderManagmentApi.tsx";
 import {useCallback, useState} from "react";
 import {Loader} from "shared/ui/Loader/Loader.tsx";
+import {LoadingPage} from "pages/LoadingPage";
 
 interface orderCardProps extends IOrder{
     className?: string;
@@ -48,7 +49,7 @@ export const OrderCard = (props: orderCardProps) => {
     },[changeStatus, localStatus])
 
     if(isLoading){
-        return <Loader/>
+        return <LoadingPage/>
     }
 
     if(isError){

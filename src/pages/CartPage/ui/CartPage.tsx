@@ -22,7 +22,7 @@ const CartPage = ({className}: CartPageProps) => {
     const [addOrder, {isLoading}] = useFetchOrderMutation();
     const price = useSelector(getSum).toString()
     const [open, setOpen] = useState(false);
-    const bakeryId = useSelector((state: StateSchema) => state.auth.bakeryId);
+    const bakeryId = useSelector((state: StateSchema) => state.auth?.bakeryId);
     const info = useSelector(getGoods);
     const navigate = useNavigate();
 
@@ -30,8 +30,10 @@ const CartPage = ({className}: CartPageProps) => {
         try{
             const response = await addOrder({bakeryId, info,  price}).unwrap();
             if(response.orderId) {
-                setOpen(true);
-                navigate(RoutePath.goods)
+                localStorage.removeItem("cartProductIds")
+                await setOpen(true);
+                // window.location.reload();
+                // navigate(RoutePath.goods)
             }
 
         }catch(err){

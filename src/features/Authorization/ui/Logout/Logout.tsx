@@ -7,6 +7,8 @@ import {useCallback} from "react";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
+import {useAppDispatch} from "shared/lib/hooks/useAppDispatch.tsx";
+import {sideBarActions} from "widgets/Sidebar";
 
 interface LogoutProps {
     className?: string;
@@ -16,6 +18,7 @@ export const Logout = ({className}: LogoutProps) => {
 
     const [logout, {isLoading}] = useLogoutUserMutation()
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const handleLogout = useCallback( async () => {
         const accessToken = Cookies.get("token");
@@ -23,7 +26,9 @@ export const Logout = ({className}: LogoutProps) => {
             const response = await logout({accessToken}).unwrap();
             if(response.success){
                 Cookies.remove("token");
+                dispatch(sideBarActions.toggleCollapsed(false))
                 navigate(RoutePath.register);
+
             }
         }catch(err){
             console.log(err);

@@ -5,7 +5,7 @@ import {IOrder} from "../../model/types/orderSchema.ts";
 import {useGetAllOrdersQuery} from "features/OrderManagment/api/OrderManagmentApi.tsx";
 import {getOrderFilter} from "../../model/selectrors/getOrdersSelectors.tsx";
 import {useSelector} from "react-redux";
-import {useMemo} from "react";
+import {useEffect, useMemo} from "react";
 import {LoadingPage} from "pages/LoadingPage";
 
 interface ordersListProps {
@@ -199,6 +199,7 @@ export const OrdersList = ({className}: ordersListProps) => {
                 return data.orders;
         }
     }, [data, filter]);
+
 
     if(isLoading){
         return <LoadingPage/>
