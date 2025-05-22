@@ -4,6 +4,7 @@ import {BunDetails} from "entities/BunDetails";
 import {useNavigate, useParams} from "react-router-dom";
 import Back from 'shared/assets/icons/back.svg?react'
 import {useCallback} from "react";
+import {Loader} from "shared/ui/Loader/Loader.tsx";
 
 interface GoodsDetailsPageProps {
     className?: string;
@@ -19,14 +20,14 @@ const GoodsDetailsPage = ({className}: GoodsDetailsPageProps) => {
     const {id} = useParams<{id: string}>();
 
     if(!id){
-        return null
+        return <Loader/>
     }
     return (
         <div className={classNames(cls.GoodsDetailsPage, {}, [className])}>
             <div className={cls.flex}  onClick = {onNavigate} >
                 <Back className={cls.back}/>
             </div>
-            <BunDetails/>
+            <BunDetails id={id}/>
         </div>
     )
 }

@@ -193,8 +193,8 @@ export const OrdersList = ({className}: ordersListProps) => {
         switch (filter) {
             case 'Готовы':
                 return data.orders.filter(order => order.status === 'Готово');
-            case 'В обработке':
-                return data.orders.filter(order => order.status === 'В обработке');
+            case 'В процессе':
+                return data.orders.filter(order => order.status === 'В процессе');
             default:
                 return data.orders;
         }

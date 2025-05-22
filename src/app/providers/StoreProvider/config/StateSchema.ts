@@ -8,6 +8,7 @@ import {rtkApi} from "shared/api/rtkApi.tsx";
 import {Profile} from "entities/Profile";
 import {PlaceAnOrderSchema} from "features/PlaceAnOrder";
 import {OrderSchema} from "features/OrderManagment";
+import {BunDetailsSchema} from "entities/BunDetails";
 
 export interface StateSchema {
     sideBar: SideBarSchema
@@ -15,6 +16,7 @@ export interface StateSchema {
     profile: Profile
     order: PlaceAnOrderSchema
     auth: AuthSchema
+    bun: BunDetailsSchema
     adminOrder: OrderSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 }

@@ -11,11 +11,10 @@ interface CartItemProps {
 
 
 export const CartItem = ({className, item}: CartItemProps) => {
-    //нужно вообще заносить айдишники, а потом отправлять данные на сервер
     return (
         <div className={classNames(cls.CartItem, {}, [className])}>
             <div className={cls.cardItem}>
-                {item.img ? <img src={item.img} alt=""/>: (
+                {item.photo ? <img src={item.photo} className={cls.img} alt=""/>: (
                     <div className={cls.mockImg}/>
                 )}
                 <div className={cls.itemDescr}>

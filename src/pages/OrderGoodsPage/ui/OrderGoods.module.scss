@@ -1,4 +1,5 @@
 .OrderGoods {
+  min-height: 100vh;
   padding:10rem 3rem;
   background: var(--background-main);
 }
@@ -16,7 +17,7 @@
 
 @media(max-width: 576px){
   .OrderGoods {
-    padding: 5rem 2rem;
+    padding: 6rem 2rem;
 
   }
 }

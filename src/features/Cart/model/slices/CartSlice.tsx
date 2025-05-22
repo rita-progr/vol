@@ -1,10 +1,11 @@
 import {CartSchema} from "../types/CartSchema.ts";
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState: CartSchema = {
     isLoading: false,
     error: null,
-    goods: []
+    goods: [],
+    productIds: []
 }
 
 const CartSlice = createSlice({
@@ -12,10 +13,14 @@ const CartSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, action)=>{
-            state.goods.push(action.payload)
+            state.productIds?.push(action.payload)
+            localStorage.setItem("cartProductIds", JSON.stringify(state.productIds))
         },
-        deleteItem: (state, action)=>{
-            state.goods.splice(state.goods.indexOf(action.payload), 1)
+        removeFromCart: (state, action: PayloadAction<string>) => {
+            state.productIds = state.productIds?.filter(id => id !== action.payload);
+        },
+        setCart: (state, action: PayloadAction<string[]>) => {
+            state.productIds = action.payload;
         }
     }
 })

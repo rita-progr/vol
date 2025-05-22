@@ -1,6 +1,6 @@
 import cls from './Input.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
-import {ChangeEvent, InputHTMLAttributes, memo} from "react";
+import {ChangeEvent, ForwardedRef, InputHTMLAttributes, memo} from "react";
 import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>;
@@ -13,7 +13,7 @@ interface InputProps extends HTMLInputProps {
     error?: string,
     label?: string,
     classNameInput?: string,
-    ref?: (el: any) => any
+    ref?: ForwardedRef<HTMLInputElement>
 }
 
 export const Input = memo(({

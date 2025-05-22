@@ -1,6 +1,10 @@
 export interface ItemCard{
-    id: number;
-    title: string;
+    id: string;
+    name: string;
     price: number;
-    img?: string;
+    photo?: string;
+}
+
+export interface ItemDataCard{
+    products: ItemCard[];
 }

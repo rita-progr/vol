@@ -13,9 +13,14 @@ export interface GoodsItem{
     composition?: string;
 }
 
+export interface DataResponseCart{
+    resp: GoodsItem[]
+}
+
 export interface CartSchema {
     isLoading: boolean;
     error?: string|null;
     goods: GoodsItem[];
+    productIds?: string[]
 
 }

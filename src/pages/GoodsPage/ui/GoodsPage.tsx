@@ -27,8 +27,14 @@ const GoodsPage = ({className}: GoodsPageProps) => {
     const dispatch = useAppDispatch();
 
     const addItemToCart = useCallback((item: GoodsItem)=>{
-        dispatch(CartActions.addItem(item))
+        dispatch(CartActions.addItem(item.id))
     },[dispatch])
+
+    // const addToCart = useCallback(() => {
+    //     if (id) {
+    //         dispatch(CartActions.addItem(id));
+    //     }
+    // }, [id, dispatch]);
 
     if(!id){
         return null;
@@ -44,7 +50,7 @@ const GoodsPage = ({className}: GoodsPageProps) => {
                     align={TextAlign.CENTER}
                     theme={TextTheme.SECONDARY}
                     className={cls.text}/>
-            <BunItems addItemToCart={addItemToCart} category={''}/>
+            <BunItems addItemToCart={addItemToCart} category={title}/>
         </div>
     )
 }

@@ -9,6 +9,7 @@ import {ProfileReducer} from "entities/Profile";
 import {placeAnOrderReducer} from "features/PlaceAnOrder";
 import {AuthReducer} from "features/Authorization/model/slices/AuthSlices.ts";
 import {orderReducer} from "features/OrderManagment";
+import {BunDetailsReducer} from "entities/BunDetails";
 
 export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  ReducersMapObject<StateSchema>)=>{
 
@@ -22,6 +23,7 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?:  Re
         profile: ProfileReducer,
         order: placeAnOrderReducer,
         auth: AuthReducer,
+        bun: BunDetailsReducer,
         adminOrder:orderReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
         cart: CartReducer

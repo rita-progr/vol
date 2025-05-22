@@ -7,6 +7,8 @@ import {RoutePath} from "shared/config/route/routeConfig.tsx";
 import {useGetBunsMutation} from "features/Buns/api/BunsApi.tsx";
 import {LoadingPage} from "pages/LoadingPage";
 import {useEffect, useState} from "react";
+import {Loader} from "shared/ui/Loader/Loader.tsx";
+import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 
 
 interface BunItemsProps {
@@ -124,9 +126,6 @@ export const BunItems = ({className, addItemToCart, category}: BunItemsProps) =>
         if(data){
             setItems(data.menu)
         }
-        // if(isError){
-        //     navigate(RoutePath.register)
-        // }
     }, [data, isError, navigate]);
 
     if(isLoading){
@@ -135,6 +134,8 @@ export const BunItems = ({className, addItemToCart, category}: BunItemsProps) =>
 
     return (
         <div className={classNames(cls.BunItems, {}, [className])}>
+            {isLoading && <Loader/>}
+            {items.length < 0 && <MyText text={'Товары не найдены :('} align={TextAlign.CENTER} size={TextSize.USERNAME}/>}
             {items && items.map(item=>(
                 <Link to = {`${RoutePath.goods_details}${item.id}`} key={item.id}>
                     <Card

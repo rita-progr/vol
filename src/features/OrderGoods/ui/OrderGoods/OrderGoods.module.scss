@@ -7,6 +7,7 @@
 .btn{
   padding: .6rem;
   width: 150px;
+  margin: 0 auto;
 }
 
 .flex{
@@ -57,7 +58,7 @@
 @media(max-width:576px){
 
   .flex{
-    flex-direction: column;
+    //flex-direction: column;
     //justify-content: start;
   }
 

@@ -24,12 +24,12 @@ export interface OrderSchema{
 
 export enum FilterEnum{
     ALL = 'Все заказы',
-    PENDING = 'В обработке',
+    PENDING = 'В процессе',
     READY = 'Готовы'
 }
 
 export enum StatusEnum{
     READY = 'Готов',
-    PENDING = 'В обработке'
+    PENDING = 'В процессе'
 
 }
