@@ -18,11 +18,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
     theme?:ButtonTheme;
     radius?: ButtonRadius;
+    disabled?: boolean;
 }
 
-export const Button = memo(({className, children,onClick, theme = ButtonTheme.CLEAR, radius = ButtonRadius.DEFAULT, ...otherProps}: ButtonProps) => {
+export const Button = memo(({className, children,onClick, theme = ButtonTheme.CLEAR, disabled,  radius = ButtonRadius.DEFAULT, ...otherProps}: ButtonProps) => {
     return (
-        <button className={classNames(cls.Button, {}, [className, cls[theme], cls[radius]])} onClick={onClick} {...otherProps}>
+        <button disabled={disabled} className={classNames(cls.Button, {[cls.disabled]: disabled}, [className, cls[theme], cls[radius], ])} onClick={onClick} {...otherProps}>
             {children}
         </button>
     )

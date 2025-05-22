@@ -20,7 +20,7 @@ export const CartItem = ({className, item}: CartItemProps) => {
                 <div className={cls.itemDescr}>
                     { <MyText text={item.name} size={TextSize.MEDIUM} className={cls.title}/> }
                     <MyText text={`Бжу  ${item.proteins}/${item.fats}/${item.carbohydrates}`} size={TextSize.MEDIUM}/>
-                    {item.calories ? <MyText text={`Ккал  ${item.calories} ккал`} size={TextSize.MEDIUM} /> : null }
+                    {item.calories ? <MyText text={`${item.calories} ккал`} size={TextSize.MEDIUM} /> : null }
                 </div>
             </div>
             <div className={cls.pricesBlock}>

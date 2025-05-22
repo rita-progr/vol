@@ -37,6 +37,10 @@ button:hover {
 
 }
 
+.disabled{
+  opacity: 0.8;
+}
+
 @media(max-width: 576px){
   .small{
     //border-radius: 10px;

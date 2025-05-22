@@ -1,15 +1,17 @@
 import cls from './BunDetails.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
-import {MyText, TextSize} from "shared/ui/MyText/MyText.tsx";
+import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import {useGetDetailsGoodsMutation} from "entities/BunDetails/api/BunDetailsApi.tsx";
-import {useCallback, useEffect} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {StateSchema} from "app/providers/StoreProvider";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch.tsx";
 import {BunDetailsAction} from "entities/BunDetails/model/slices/BunDetailsSlice.tsx";
 import {LoadingPage} from "pages/LoadingPage";
 import {CartActions} from "features/Cart";
+import Good from 'shared/assets/icons/good.svg?react'
+import {Modal} from "shared/ui/Modal/Modal.tsx";
 
 interface BunDetailsProps {
     className?: string;
@@ -33,6 +35,7 @@ interface BunDetailsProps {
 export const BunDetails = ({className, id}: BunDetailsProps) => {
     const [getDetails, {data, isLoading, isError}] = useGetDetailsGoodsMutation();
     const bunDetails = useSelector((state: StateSchema) => state.bun.bun);
+    const [openModal, setOpenModal] = useState(false);
     const dispatch = useAppDispatch();
 
     // if(!item){
@@ -55,6 +58,7 @@ export const BunDetails = ({className, id}: BunDetailsProps) => {
     const addToCart = useCallback(() => {
         if (id) {
             dispatch(CartActions.addItem(id));
+            setOpenModal(true);
         }
     }, [id, dispatch]);
 
@@ -108,7 +112,12 @@ export const BunDetails = ({className, id}: BunDetailsProps) => {
                 </div>
 
             </div>
-
+            <Modal onClose={()=>setOpenModal(false)} isOpen={openModal} className={classNames(cls.PlaceAnOrder, {}, [className])}>
+                <div className={cls.card}>
+                    <MyText title={'Товар добавлен в корзину'} size={TextSize.XMEDIUM} align={TextAlign.CENTER}/>
+                    <Good className={cls.icon}/>
+                </div>
+            </Modal>
 
         </div>
     )

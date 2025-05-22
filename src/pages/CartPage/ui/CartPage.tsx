@@ -24,16 +24,14 @@ const CartPage = ({className}: CartPageProps) => {
     const [open, setOpen] = useState(false);
     const bakeryId = useSelector((state: StateSchema) => state.auth?.bakeryId);
     const info = useSelector(getGoods);
-    const navigate = useNavigate();
+    const isDisabled = Boolean(info);
 
     const handleOrder = async () => {
         try{
             const response = await addOrder({bakeryId, info,  price}).unwrap();
             if(response.orderId) {
                 localStorage.removeItem("cartProductIds")
-                await setOpen(true);
-                // window.location.reload();
-                // navigate(RoutePath.goods)
+                setOpen(true);
             }
 
         }catch(err){
@@ -50,7 +48,7 @@ const CartPage = ({className}: CartPageProps) => {
              <CartList className={cls.select}/>
             <MyText text={`Итого: ${price} р`} className={cls.text}/>
             <SelectBakery />
-            <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={handleOrder} >
+            <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={handleOrder} disabled={isDisabled} >
                 <MyText text={'Оформить заказ'} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
             </Button>
             <PlaceAnOrder isOpen={open} onClose={()=>setOpen(false)}/>

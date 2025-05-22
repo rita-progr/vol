@@ -5,9 +5,8 @@ import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
 import {Link, useNavigate} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
-import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
-import {AuthActions, AuthReducer} from "../../model/slices/AuthSlices.ts";
-import {useCallback, useEffect, useState} from "react";
+import {AuthActions} from "../../model/slices/AuthSlices.ts";
+import {useCallback, useState} from "react";
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch.tsx";
 import {useSelector} from "react-redux";
 import {getAuthEmail, getAuthPassword, getValidateError} from "../../model/selectors/authSelectors.ts";
@@ -18,10 +17,6 @@ import {LoadingPage} from "pages/LoadingPage";
 
 interface AuthorizationFormProps {
     className?: string;
-}
-
-const reducers: ReducersList = {
-    auth: AuthReducer
 }
 
 export const AuthorizationForm = ({className}: AuthorizationFormProps) => {
@@ -36,29 +31,31 @@ export const AuthorizationForm = ({className}: AuthorizationFormProps) => {
     const debouncedPassword = useDebounce(localPassword, 500)
     const [loginUser, { isLoading, isError }] = useLoginUserMutation();
 
-    useEffect(() => {
-        if(debouncedEmail !== ''){
-            dispatch(AuthActions.setEmail(debouncedEmail ?? ''))
-        }else{
-            dispatch(AuthActions.setEmail(''))
-        }
-    },[debouncedEmail, dispatch])
-
-    useEffect(() => {
-        if(debouncedPassword !== ''){
-            dispatch(AuthActions.setPassword(debouncedPassword ?? ''))
-        }else{
-            dispatch(AuthActions.setPassword(''))
-        }
-    },[debouncedPassword, dispatch])
+    // useEffect(() => {
+    //     if(debouncedEmail !== ''){
+    //         dispatch(AuthActions.setEmail(debouncedEmail ?? ''))
+    //     }else{
+    //         dispatch(AuthActions.setEmail(''))
+    //     }
+    // },[debouncedEmail, dispatch])
+    //
+    // useEffect(() => {
+    //     if(debouncedPassword !== ''){
+    //         dispatch(AuthActions.setPassword(debouncedPassword ?? ''))
+    //     }else{
+    //         dispatch(AuthActions.setPassword(''))
+    //     }
+    // },[debouncedPassword, dispatch])
 
     const handleEmailChange = useCallback((email: string) => {
+        dispatch(AuthActions.setEmail(email));
         setLocalEmail(email);
         const errors = validateAuthForm({ email, password });
         dispatch(AuthActions.setErrors({ ...validateError, email: errors.email }));
-    },[dispatch, password, validateError])
+    }, [dispatch, password, validateError]);
 
     const handlePasswordChange = useCallback((password: string) => {
+        dispatch(AuthActions.setPassword(password));
         setLocalPassword(password);
         const errors = validateAuthForm({ email, password });
         dispatch(AuthActions.setErrors({ ...validateError, password: errors.password }));

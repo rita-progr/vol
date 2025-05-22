@@ -34,8 +34,7 @@ export const AuthorizationBakery = ({className}: AuthorizationBakeryProps) => {
             const response = await fetchLoginBakery({bakeryId, password}).unwrap();
             console.log(response);
             if(response){
-
-                navigate(RoutePath.main);
+                navigate(RoutePath.admin);
             }
 
         } catch (error) {

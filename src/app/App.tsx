@@ -27,9 +27,7 @@ export const App = () => {
         <div>
             <Navbar/>
             <RouteProvider/>
-            {token && (
-                <SideBar/>
-            )}
+             <SideBar/>
             <Footer/>
         </div>
     )

@@ -3,10 +3,9 @@ import {classNames} from "shared/lib/classNames/classNames";
 import {MyText, TextAlign, TextSize} from "shared/ui/MyText/MyText.tsx";
 import {Input} from "shared/ui/Input/Input.tsx";
 import {Button, ButtonTheme} from "shared/ui/Button/Button.tsx";
-import {Link, Route, useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {RoutePath} from "shared/config/route/routeConfig.tsx";
-import {DynemicModuleLoader, ReducersList} from "shared/lib/components/DynemicModuleLoader/DynemicModuleLoader.tsx";
-import {AuthActions, AuthReducer} from "../../model/slices/AuthSlices.ts";
+import {AuthActions} from "../../model/slices/AuthSlices.ts";
 import {useRegisterUserMutation} from "../../api/AuthorizationApi.tsx";
 import {LoadingPage} from "pages/LoadingPage";
 import {useSelector} from "react-redux";
@@ -24,9 +23,7 @@ interface AuthorizationFormProps {
     className?: string;
 }
 
-const reducers: ReducersList = {
-    auth: AuthReducer
-}
+
 
 export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) => {
     const [registerUser, {isLoading, isError}] = useRegisterUserMutation();
@@ -90,7 +87,6 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
 
 
     return (
-        <DynemicModuleLoader reducers={reducers}>
         <div className={classNames(cls.AuthorizationForm, {}, [className])}>
             <MyText text = {'Регистрация'}
                     size={TextSize.XMEDIUM}
@@ -120,6 +116,5 @@ export const AuthorizationFormRegister = ({className}: AuthorizationFormProps) =
             </div>
 
         </div>
-        </DynemicModuleLoader>
     )
 }
