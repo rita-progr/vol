@@ -24,6 +24,7 @@ const CartPage = ({className}: CartPageProps) => {
     const [open, setOpen] = useState(false);
     const bakeryId = useSelector((state: StateSchema) => state.auth?.bakeryId);
     const info = useSelector(getGoods);
+
     const isDisabled = Boolean(info);
 
     const handleOrder = async () => {
@@ -48,7 +49,7 @@ const CartPage = ({className}: CartPageProps) => {
              <CartList className={cls.select}/>
             <MyText text={`Итого: ${price} р`} className={cls.text}/>
             <SelectBakery />
-            <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={handleOrder} disabled={isDisabled} >
+            <Button theme={ButtonTheme.PRIMARY} className={cls.btn} onClick={handleOrder} disabled={!isDisabled} >
                 <MyText text={'Оформить заказ'} size={TextSize.MEDIUM} align={TextAlign.CENTER}/>
             </Button>
             <PlaceAnOrder isOpen={open} onClose={()=>setOpen(false)}/>
