@@ -24,15 +24,15 @@ export const CartItem = ({className, item}: CartItemProps) => {
                 </div>
             </div>
             <div className={cls.pricesBlock}>
-                <div className={cls.counts}>
-                    <Button>
-                        -
-                    </Button>
-                    <MyText text={item.count?.toString() ?? "0"} size={TextSize.MEDIUM} className={cls.count}/>
-                    <Button>
-                        +
-                    </Button>
-                </div>
+                {/*<div className={cls.counts}>*/}
+                {/*    <Button>*/}
+                {/*        -*/}
+                {/*    </Button>*/}
+                {/*    <MyText text={item.count?.toString() ?? "0"} size={TextSize.MEDIUM} className={cls.count}/>*/}
+                {/*    <Button>*/}
+                {/*        +*/}
+                {/*    </Button>*/}
+                {/*</div>*/}
                 <MyText text={`${item.price} p`} size={TextSize.MEDIUM}/>
             </div>
 

@@ -4,8 +4,9 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 const initialState: CartSchema = {
     isLoading: false,
     error: null,
-    goods: [],
-    productIds: []
+    info: [],
+    productIds: [],
+    sum: 0
 }
 
 const CartSlice = createSlice({
@@ -21,6 +22,12 @@ const CartSlice = createSlice({
         },
         setCart: (state, action: PayloadAction<string[]>) => {
             state.productIds = action.payload;
+        },
+        sum: (state, action) => {
+            state.sum = action.payload;
+        },
+        setGoods: (state, action) => {
+            state.info = action.payload;
         }
     }
 })

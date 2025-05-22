@@ -20,7 +20,12 @@ export interface DataResponseCart{
 export interface CartSchema {
     isLoading: boolean;
     error?: string|null;
-    goods: GoodsItem[];
-    productIds?: string[]
+    productIds?: string[];
+    sum: number;
+    info: CartProductWithQuantity[];
+}
 
+export interface CartProductWithQuantity {
+    name: string;
+    quantity: number;
 }
