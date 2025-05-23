@@ -77,7 +77,8 @@ export const EditCard = ({className, isOpen, onClose}: EditCardProps) => {
                     <input type={'file'}
                            placeholder={'Выберите фото'}
                            accept="image/*"
-                           onChange={handleFileChange} />
+                           onChange={handleFileChange}
+                    className={cls.input}/>
                     <div>
                         <Input placeholder={'Ваше имя'}
                                value={name}
