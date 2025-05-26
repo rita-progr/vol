@@ -7,7 +7,8 @@ export const OrderManagmentApi = rtkApi.injectEndpoints({
             query:()=>({
                 url: '/bakery/get-all-orders',
                 method: 'POST',
-            })
+            }),
+            providesTags: ['Orders']
         }),
         changeStatus: build.mutation({
             query:({id,status})=>({
@@ -17,7 +18,8 @@ export const OrderManagmentApi = rtkApi.injectEndpoints({
                     id,
                     status,
                 }
-            })
+            }),
+            invalidatesTags: ['Orders']
         })
     })
 })

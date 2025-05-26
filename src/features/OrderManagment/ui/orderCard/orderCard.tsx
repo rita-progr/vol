@@ -7,7 +7,6 @@ import {Button} from "shared/ui/Button/Button.tsx";
 import {IOrder, StatusEnum} from "../../model/types/orderSchema.ts";
 import {useChangeStatusMutation} from "../../api/OrderManagmentApi.tsx";
 import {useCallback, useState} from "react";
-import {Loader} from "shared/ui/Loader/Loader.tsx";
 import {LoadingPage} from "pages/LoadingPage";
 
 interface orderCardProps extends IOrder{
@@ -29,24 +28,20 @@ export const OrderCard = (props: orderCardProps) => {
 
     const [changeStatus,{isLoading, isError}] = useChangeStatusMutation();
 
+    const onChangeStatus = useCallback(async (id: string) => {
+        const newStatus = localStatus === StatusEnum.PENDING
+            ? StatusEnum.READY
+            : StatusEnum.PENDING;
 
+        setLocalStatus(newStatus);
 
-    const onChangeStatus = useCallback(async (id: string)=>{
-        if(localStatus === StatusEnum.PENDING){
-            setLocalStatus(StatusEnum.READY)
-        }else{
-            setLocalStatus(StatusEnum.PENDING )
+        try {
+            const response = await changeStatus({ id, status: newStatus }).unwrap();
+            console.log(response);
+        } catch (err) {
+            console.error(err);
         }
-        try{
-            const response = await changeStatus({id, status: localStatus}).unwrap();
-            if(response.success){
-                console.log(response)
-            }
-        }catch(err){
-            console.log(err);
-        }
-
-    },[changeStatus, localStatus])
+    }, [changeStatus, localStatus]);
 
     if(isLoading){
         return <LoadingPage/>

@@ -60,6 +60,8 @@ export const SideBar = ({className}: SideBarProps) => {
     useEffect(() => {
         if(isBakery){
             setPathList(bakeryList)
+        }else{
+            setPathList(itemsList)
         }
     },[isBakery])
 

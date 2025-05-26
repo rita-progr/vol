@@ -1,11 +1,10 @@
 import cls from './ordersList.module.scss';
 import {classNames} from "shared/lib/classNames/classNames";
 import {OrderCard} from "../orderCard/orderCard.tsx";
-import {IOrder} from "../../model/types/orderSchema.ts";
 import {useGetAllOrdersQuery} from "features/OrderManagment/api/OrderManagmentApi.tsx";
 import {getOrderFilter} from "../../model/selectrors/getOrdersSelectors.tsx";
 import {useSelector} from "react-redux";
-import {useEffect, useMemo} from "react";
+import {useMemo} from "react";
 import {LoadingPage} from "pages/LoadingPage";
 
 interface ordersListProps {
@@ -192,7 +191,7 @@ export const OrdersList = ({className}: ordersListProps) => {
 
         switch (filter) {
             case 'Готовы':
-                return data.orders.filter(order => order.status === 'Готово');
+                return data.orders.filter(order => order.status === 'Готов');
             case 'В процессе':
                 return data.orders.filter(order => order.status === 'В процессе');
             default:
