@@ -31,6 +31,8 @@ export const AuthorizationBakery = ({className}: AuthorizationBakeryProps) => {
     const handleSubmit = useCallback(async () => {
         try {
             localStorage.setItem(BAKERY_ID, bakeryId);
+            localStorage.setItem('IS_BAKERY', "true");
+
             const response = await fetchLoginBakery({bakeryId, password}).unwrap();
             console.log(response);
             if(response){

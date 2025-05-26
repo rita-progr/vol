@@ -21,7 +21,9 @@ export const Navbar = ({className}: NavbarProps) => {
     const token = Cookies.get(USER_COOKIES_KEY)
     const collapsed = useSelector(getCollapsed)
     const dispatch = useAppDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const isBakery = localStorage.getItem("IS_BAKERY");
+
 
     const onToggleCollapsed = useCallback(() => {
         dispatch(sideBarActions.toggleCollapsed(!collapsed))
@@ -36,9 +38,11 @@ export const Navbar = ({className}: NavbarProps) => {
             <Logo className = {cls.logo} onClick = {onMainPage}/>
             {token && token.length > 0 && (
                 <div className={cls.flex}>
-                    <Link to={RoutePath.cart}>
-                        <Card className={cls.card}/>
-                    </Link>
+                    {!isBakery ? (
+                        <Link to={RoutePath.cart}>
+                            <Card className={cls.card}/>
+                        </Link>
+                    ): null}
                     <Burger onClick={onToggleCollapsed} toggle={collapsed}/>
                 </div>
             )}

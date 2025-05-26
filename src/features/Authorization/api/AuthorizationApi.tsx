@@ -92,7 +92,7 @@ const AuthorizationApi = rtkApi.injectEndpoints({
                         const token = authHeader.slice(7);
                         Cookies.remove(USER_COOKIES_KEY);
                         Cookies.set(USER_COOKIES_KEY, token);
-                        localStorage.setItem('IS_BAKERY', "true");
+
                     }
                 } catch (error) {
                     console.error('Ошибка логина:', error);
