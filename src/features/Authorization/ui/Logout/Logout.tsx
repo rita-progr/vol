@@ -21,11 +21,15 @@ export const Logout = ({className}: LogoutProps) => {
     const dispatch = useAppDispatch();
 
     const handleLogout = useCallback( async () => {
+        const isBakery = localStorage.getItem("IS_BAKERY");
         const accessToken = Cookies.get("token");
         try{
             const response = await logout({accessToken}).unwrap();
             if(response.success){
                 Cookies.remove("token");
+                if(isBakery){
+                    localStorage.removeItem("IS_BAKERY");
+                }
                 dispatch(sideBarActions.toggleCollapsed(false))
                 navigate(RoutePath.register);
 
